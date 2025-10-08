@@ -1,0 +1,38 @@
+/* OpticWorks Intranet Custom Styles */
+/* Primary brand color: #61ee64 */
+
+:root {
+  /* Accent color scale based on #61ee64 (bright green) */
+  --sl-color-accent-low: #e8fce8;
+  --sl-color-accent: #61ee64;
+  --sl-color-accent-high: #3dd041;
+
+  /* Detailed accent color palette */
+  --color-accent-50: #f0fef0;
+  --color-accent-100: #dafcdb;
+  --color-accent-200: #b8f9ba;
+  --color-accent-300: #8bf48e;
+  --color-accent-400: #61ee64;
+  --color-accent-500: #3dd041;
+  --color-accent-600: #2ab82e;
+  --color-accent-700: #249027;
+  --color-accent-800: #227124;
+  --color-accent-900: #1f5d20;
+  --color-accent-950: #0b340c;
+}
+
+/* Dark theme adjustments */
+:root[data-theme='dark'] {
+  --sl-color-accent-low: #0f2b10;
+  --sl-color-accent: #61ee64;
+  --sl-color-accent-high: #b8f9ba;
+}
+
+/* Custom link styling */
+a {
+  color: var(--sl-color-accent);
+}
+
+a:hover {
+  color: var(--sl-color-accent-high);
+}
