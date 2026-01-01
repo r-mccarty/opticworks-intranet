@@ -80,6 +80,25 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Products',
+					items: [
+						{
+							label: 'RS-1 User Manual',
+							items: [
+								{ label: 'Overview', slug: 'products/rs-1' },
+								{ label: 'Quick Start', slug: 'products/rs-1/quick-start' },
+								{ label: 'Hardware Overview', slug: 'products/rs-1/hardware' },
+								{ label: 'iOS App & RoomPlan', slug: 'products/rs-1/roomplan' },
+								{ label: 'Calibration & Tuning', slug: 'products/rs-1/calibration' },
+								{ label: 'Daily Usage', slug: 'products/rs-1/usage' },
+								{ label: 'Integrations', slug: 'products/rs-1/integrations' },
+								{ label: 'Troubleshooting', slug: 'products/rs-1/troubleshooting' },
+								{ label: 'Specifications', slug: 'products/rs-1/specifications' },
+							],
+						},
+					],
+				},
+				{
 					label: 'Policies',
 					autogenerate: { directory: 'policies' },
 				},
