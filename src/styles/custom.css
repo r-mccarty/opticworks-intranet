@@ -1,4 +1,13 @@
-/* OpticWorks Intranet - Clean Modern Design */
+/**
+ * OpticWorks Intranet - Apple-inspired Clean Design
+ *
+ * Design principles:
+ * - High contrast text (WCAG AA minimum)
+ * - Clean, minimal color palette
+ * - Generous whitespace
+ * - Clear visual hierarchy
+ * - Subtle shadows and borders
+ */
 
 /* ============================================
    FONTS
@@ -6,75 +15,94 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ============================================
-   CSS VARIABLES - Light Theme (Default)
+   LIGHT THEME (Default)
    ============================================ */
 :root {
-  --sl-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  /* Typography */
+  --sl-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sl-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
-  /* Clean neutral palette */
+  /*
+   * Color palette - Apple-inspired neutrals
+   * High contrast: dark text on light backgrounds
+   */
   --sl-color-white: #ffffff;
-  --sl-color-gray-1: #f8fafc;
-  --sl-color-gray-2: #e2e8f0;
-  --sl-color-gray-3: #cbd5e1;
-  --sl-color-gray-4: #94a3b8;
-  --sl-color-gray-5: #64748b;
-  --sl-color-gray-6: #475569;
-  --sl-color-gray-7: #1e293b;
-  --sl-color-black: #0f172a;
+  --sl-color-gray-1: #f5f5f7;  /* Apple light gray */
+  --sl-color-gray-2: #e8e8ed;
+  --sl-color-gray-3: #d2d2d7;
+  --sl-color-gray-4: #86868b;  /* Apple secondary text */
+  --sl-color-gray-5: #6e6e73;
+  --sl-color-gray-6: #1d1d1f;  /* Apple primary text */
+  --sl-color-black: #000000;
 
-  /* Accent - subtle blue for professionalism */
-  --sl-color-accent-low: #eff6ff;
-  --sl-color-accent: #2563eb;
-  --sl-color-accent-high: #1d4ed8;
+  /* Accent - Apple blue */
+  --sl-color-accent-low: #e8f2ff;
+  --sl-color-accent: #0071e3;  /* Apple blue */
+  --sl-color-accent-high: #0077ed;
 
-  /* Text colors */
-  --sl-color-text: var(--sl-color-gray-7);
-  --sl-color-text-accent: var(--sl-color-accent-high);
+  /* Text - HIGH CONTRAST */
+  --sl-color-text: #1d1d1f;
+  --sl-color-text-accent: #0071e3;
 
-  /* Background */
-  --sl-color-bg: var(--sl-color-white);
-  --sl-color-bg-nav: rgba(255, 255, 255, 0.95);
-  --sl-color-bg-sidebar: var(--sl-color-gray-1);
+  /* Backgrounds */
+  --sl-color-bg: #ffffff;
+  --sl-color-bg-nav: rgba(255, 255, 255, 0.8);
+  --sl-color-bg-sidebar: #f5f5f7;
 
-  /* Button colors */
-  --button-primary-bg: var(--sl-color-black);
-  --button-primary-text: var(--sl-color-white);
-  --button-primary-hover: var(--sl-color-gray-7);
-  --button-secondary-border: var(--sl-color-gray-3);
-  --button-secondary-text: var(--sl-color-gray-7);
+  /* Component colors */
+  --table-header-bg: #f5f5f7;
+  --table-header-text: #1d1d1f;
+  --table-border: #d2d2d7;
+  --table-cell-text: #1d1d1f;
+
+  --code-bg: #f5f5f7;
+  --code-text: #1d1d1f;
+  --code-border: #e8e8ed;
+
+  --card-bg: #ffffff;
+  --card-border: #e8e8ed;
+  --card-text: #1d1d1f;
+  --card-text-secondary: #6e6e73;
 }
 
 /* ============================================
    DARK THEME
    ============================================ */
 :root[data-theme='dark'] {
-  --sl-color-white: #f8fafc;
-  --sl-color-gray-1: #1e293b;
-  --sl-color-gray-2: #334155;
-  --sl-color-gray-3: #475569;
-  --sl-color-gray-4: #64748b;
-  --sl-color-gray-5: #94a3b8;
-  --sl-color-gray-6: #cbd5e1;
-  --sl-color-gray-7: #e2e8f0;
-  --sl-color-black: #0f172a;
+  --sl-color-white: #f5f5f7;
+  --sl-color-gray-1: #1d1d1f;
+  --sl-color-gray-2: #2d2d2f;
+  --sl-color-gray-3: #3d3d3f;
+  --sl-color-gray-4: #86868b;
+  --sl-color-gray-5: #a1a1a6;
+  --sl-color-gray-6: #f5f5f7;
+  --sl-color-black: #000000;
 
-  --sl-color-accent-low: rgba(59, 130, 246, 0.15);
-  --sl-color-accent: #60a5fa;
-  --sl-color-accent-high: #93c5fd;
+  --sl-color-accent-low: rgba(0, 113, 227, 0.15);
+  --sl-color-accent: #2997ff;  /* Apple blue for dark */
+  --sl-color-accent-high: #6cb6ff;
 
-  --sl-color-text: var(--sl-color-gray-7);
-  --sl-color-text-accent: var(--sl-color-accent-high);
+  --sl-color-text: #f5f5f7;
+  --sl-color-text-accent: #2997ff;
 
-  --sl-color-bg: #0f172a;
-  --sl-color-bg-nav: rgba(15, 23, 42, 0.95);
-  --sl-color-bg-sidebar: #1e293b;
+  --sl-color-bg: #000000;
+  --sl-color-bg-nav: rgba(0, 0, 0, 0.8);
+  --sl-color-bg-sidebar: #1d1d1f;
 
-  --button-primary-bg: var(--sl-color-white);
-  --button-primary-text: var(--sl-color-black);
-  --button-primary-hover: #e2e8f0;
-  --button-secondary-border: var(--sl-color-gray-3);
-  --button-secondary-text: var(--sl-color-gray-7);
+  /* Component colors - dark mode */
+  --table-header-bg: #2d2d2f;
+  --table-header-text: #f5f5f7;
+  --table-border: #3d3d3f;
+  --table-cell-text: #f5f5f7;
+
+  --code-bg: #1d1d1f;
+  --code-text: #f5f5f7;
+  --code-border: #2d2d2f;
+
+  --card-bg: #1d1d1f;
+  --card-border: #2d2d2f;
+  --card-text: #f5f5f7;
+  --card-text-secondary: #a1a1a6;
 }
 
 /* ============================================
@@ -85,66 +113,152 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  color: var(--sl-color-text);
+  background: var(--sl-color-bg);
+}
+
 h1, h2, h3, h4, h5, h6 {
+  color: var(--sl-color-text);
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.3;
-  color: var(--sl-color-text);
 }
 
 h1 { font-weight: 700; }
 
 p, li {
+  color: var(--sl-color-text);
   line-height: 1.7;
 }
 
-/* Hero title - ensure visibility */
+/* ============================================
+   HERO SECTION
+   ============================================ */
 .hero h1 {
   color: var(--sl-color-text) !important;
 }
 
-/* ============================================
-   HERO BUTTONS - High Contrast Fix
-   ============================================ */
-/* Starlight uses .sl-link-button class for hero buttons */
-.hero .sl-link-button,
-.hero .action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.15s ease;
+.hero .tagline {
+  color: var(--sl-color-gray-5) !important;
 }
 
-/* Primary button: solid background with WHITE text */
+/* Hero Buttons - Apple style */
+.hero .sl-link-button,
+.hero .action {
+  padding: 0.75rem 1.5rem;
+  border-radius: 980px; /* Apple pill shape */
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
 .hero .sl-link-button.primary,
 .hero .action.primary {
-  background: var(--button-primary-bg) !important;
-  color: var(--button-primary-text) !important;
+  background: var(--sl-color-text) !important;
+  color: var(--sl-color-bg) !important;
   border: none !important;
 }
 
 .hero .sl-link-button.primary:hover,
 .hero .action.primary:hover {
-  background: var(--button-primary-hover) !important;
-  transform: translateY(-1px);
+  opacity: 0.85;
 }
 
-/* Secondary/minimal button: outlined style */
 .hero .sl-link-button.minimal,
 .hero .action.minimal {
   background: transparent !important;
-  color: var(--button-secondary-text) !important;
-  border: 1px solid var(--button-secondary-border) !important;
+  color: var(--sl-color-accent) !important;
+  border: none !important;
 }
 
 .hero .sl-link-button.minimal:hover,
 .hero .action.minimal:hover {
-  border-color: var(--sl-color-accent) !important;
+  text-decoration: underline;
+}
+
+/* ============================================
+   TABLES - High Contrast
+   ============================================ */
+table {
+  border-collapse: collapse;
+  border: 1px solid var(--table-border);
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+th {
+  background: var(--table-header-bg) !important;
+  color: var(--table-header-text) !important;
+  font-weight: 600 !important;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--table-border);
+}
+
+td {
+  color: var(--table-cell-text) !important;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--table-border);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================
+   CODE BLOCKS - High Contrast
+   ============================================ */
+pre {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-border) !important;
+  border-radius: 8px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  color: var(--code-text) !important;
+  background: transparent !important;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: var(--code-bg) !important;
+  color: var(--sl-color-text) !important;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+  border: 1px solid var(--code-border);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--sl-color-accent);
+}
+
+.card .title {
+  color: var(--card-text) !important;
+  font-weight: 600;
+}
+
+.card .body {
+  color: var(--card-text-secondary);
+}
+
+/* Card icons */
+.card .icon svg {
   color: var(--sl-color-accent) !important;
 }
 
@@ -153,17 +267,23 @@ p, li {
    ============================================ */
 header.header {
   background: var(--sl-color-bg-nav);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--sl-color-gray-2);
 }
 
 .site-title {
-  font-weight: 700;
   color: var(--sl-color-text) !important;
+  font-weight: 600;
 }
 
 /* Sidebar */
+.sidebar-pane {
+  background: var(--sl-color-bg-sidebar);
+}
+
 nav.sidebar a {
+  color: var(--sl-color-text);
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   transition: all 0.15s ease;
@@ -171,6 +291,7 @@ nav.sidebar a {
 
 nav.sidebar a:hover {
   background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent);
 }
 
 nav.sidebar a[aria-current="page"] {
@@ -179,44 +300,11 @@ nav.sidebar a[aria-current="page"] {
   font-weight: 600;
 }
 
-/* ============================================
-   CARDS
-   ============================================ */
-.card {
-  background: var(--sl-color-bg);
-  border: 1px solid var(--sl-color-gray-2);
-  border-radius: 12px;
-  padding: 1.25rem;
-  transition: all 0.2s ease;
-}
-
-.card:hover {
-  border-color: var(--sl-color-accent);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-:root[data-theme='dark'] .card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.card .title {
-  font-weight: 600;
-  color: var(--sl-color-text) !important;
-  margin-bottom: 0.5rem;
-}
-
-.card .body {
-  color: var(--sl-color-gray-5);
-  line-height: 1.6;
-}
-
-/* Card icons - use accent color instead of orange */
-.card .icon {
-  color: var(--sl-color-accent) !important;
-}
-
-.card .icon svg {
-  color: var(--sl-color-accent) !important;
+/* Sidebar group labels */
+.sidebar-content .top-level > li > details > summary,
+.sidebar-content .top-level > li > a {
+  color: var(--sl-color-text);
+  font-weight: 500;
 }
 
 /* ============================================
@@ -225,51 +313,31 @@ nav.sidebar a[aria-current="page"] {
 a {
   color: var(--sl-color-accent);
   text-decoration: none;
-  transition: color 0.15s ease;
 }
 
 a:hover {
-  color: var(--sl-color-accent-high);
-}
-
-.sl-markdown-content a:not(.card):not(.action) {
   text-decoration: underline;
-  text-decoration-color: var(--sl-color-accent-low);
-  text-underline-offset: 3px;
 }
 
-.sl-markdown-content a:not(.card):not(.action):hover {
-  text-decoration-color: var(--sl-color-accent);
+.sl-markdown-content a {
+  color: var(--sl-color-accent);
 }
 
 /* ============================================
-   CODE
+   BLOCKQUOTES
    ============================================ */
-pre {
-  border-radius: 8px;
-  border: 1px solid var(--sl-color-gray-2);
-}
-
-:not(pre) > code {
+blockquote {
+  border-left: 3px solid var(--sl-color-accent);
   background: var(--sl-color-accent-low);
-  color: var(--sl-color-accent-high);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-size: 0.875em;
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+  color: var(--sl-color-text);
 }
 
-/* ============================================
-   TABLES
-   ============================================ */
-table {
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--sl-color-gray-2);
-}
-
-th {
-  background: var(--sl-color-gray-1);
-  font-weight: 600;
+blockquote p {
+  margin: 0;
+  color: var(--sl-color-text);
 }
 
 /* ============================================
@@ -280,18 +348,13 @@ th {
   border-left-width: 4px;
 }
 
-/* ============================================
-   PAGINATION
-   ============================================ */
-.pagination-links a {
-  border: 1px solid var(--sl-color-gray-2);
-  border-radius: 8px;
-  transition: all 0.15s ease;
+.starlight-aside .starlight-aside__title {
+  color: var(--sl-color-text);
+  font-weight: 600;
 }
 
-.pagination-links a:hover {
-  border-color: var(--sl-color-accent);
-  background: var(--sl-color-accent-low);
+.starlight-aside p {
+  color: var(--sl-color-text);
 }
 
 /* ============================================
@@ -304,7 +367,6 @@ th {
 starlight-toc a {
   color: var(--sl-color-gray-5);
   font-size: 0.875rem;
-  transition: color 0.15s ease;
 }
 
 starlight-toc a:hover,
@@ -316,8 +378,14 @@ starlight-toc a[aria-current="true"] {
    SEARCH
    ============================================ */
 .pagefind-ui__search-input {
+  background: var(--sl-color-bg) !important;
+  border: 1px solid var(--sl-color-gray-3) !important;
   border-radius: 8px !important;
-  border: 1px solid var(--sl-color-gray-2) !important;
+  color: var(--sl-color-text) !important;
+}
+
+.pagefind-ui__search-input::placeholder {
+  color: var(--sl-color-gray-4) !important;
 }
 
 .pagefind-ui__search-input:focus {
@@ -326,18 +394,33 @@ starlight-toc a[aria-current="true"] {
 }
 
 /* ============================================
-   BLOCKQUOTES
+   PAGINATION
    ============================================ */
-blockquote {
-  border-left: 3px solid var(--sl-color-accent);
-  background: var(--sl-color-accent-low);
-  padding: 1rem 1.25rem;
-  border-radius: 0 8px 8px 0;
-  margin: 1.5rem 0;
+.pagination-links a {
+  border: 1px solid var(--sl-color-gray-2);
+  border-radius: 8px;
+  color: var(--sl-color-text);
 }
 
-blockquote p {
-  margin: 0;
+.pagination-links a:hover {
+  border-color: var(--sl-color-accent);
+  background: var(--sl-color-accent-low);
+}
+
+/* ============================================
+   LISTS
+   ============================================ */
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  color: var(--sl-color-text);
+}
+
+.sl-markdown-content li {
+  color: var(--sl-color-text);
+}
+
+.sl-markdown-content li::marker {
+  color: var(--sl-color-gray-4);
 }
 
 /* ============================================
@@ -346,4 +429,45 @@ blockquote p {
 :focus-visible {
   outline: 2px solid var(--sl-color-accent);
   outline-offset: 2px;
+}
+
+/* ============================================
+   EXPRESSIVE CODE OVERRIDES
+   Starlight uses Expressive Code for syntax highlighting
+   ============================================ */
+.expressive-code {
+  --ec-brdCol: var(--code-border) !important;
+}
+
+.expressive-code pre {
+  background: var(--code-bg) !important;
+  border-color: var(--code-border) !important;
+}
+
+.expressive-code .frame {
+  background: var(--code-bg) !important;
+}
+
+/* Code frame header */
+.expressive-code .header {
+  background: var(--code-bg) !important;
+  border-bottom-color: var(--code-border) !important;
+  color: var(--sl-color-text) !important;
+}
+
+/* ============================================
+   MOBILE REFINEMENTS
+   ============================================ */
+@media (max-width: 50rem) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  table {
+    font-size: 0.875rem;
+  }
+
+  th, td {
+    padding: 0.5rem 0.75rem;
+  }
 }
