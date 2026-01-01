@@ -29,6 +29,9 @@ export default defineConfig({
 				{
 					label: 'IT Resources',
 					items: [
+						{ label: 'Infrastructure Overview', slug: 'it/infrastructure' },
+						{ label: 'Infisical (Secrets)', slug: 'it/infisical' },
+						{ label: 'Development Hardware', slug: 'it/hardware' },
 						{ label: 'Software & Tools', slug: 'it/software' },
 						{ label: 'Security Guidelines', slug: 'it/security' },
 						{ label: 'Support Tickets', slug: 'it/support' },
@@ -40,6 +43,40 @@ export default defineConfig({
 						{ label: 'Development Setup', slug: 'development/setup' },
 						{ label: 'Code Standards', slug: 'development/standards' },
 						{ label: 'Git Workflow', slug: 'development/git-workflow' },
+					],
+				},
+				{
+					label: 'Projects',
+					items: [
+						{ label: 'Overview', slug: 'projects' },
+						{
+							label: 'hardwareOS',
+							items: [
+								{ label: 'Overview', slug: 'projects/hardware-os' },
+								{ label: 'Architecture', slug: 'projects/hardware-os/architecture' },
+								{ label: 'Development Guide', slug: 'projects/hardware-os/development' },
+								{ label: 'Deployment', slug: 'projects/hardware-os/deployment' },
+							],
+						},
+						{
+							label: 'Presence Detection Engine',
+							items: [
+								{ label: 'Overview', slug: 'projects/presence-engine' },
+								{ label: 'Architecture', slug: 'projects/presence-engine/architecture' },
+								{ label: 'Development Guide', slug: 'projects/presence-engine/development' },
+								{ label: 'Home Assistant Integration', slug: 'projects/presence-engine/home-assistant' },
+							],
+						},
+						{
+							label: 'OpticWorks Store',
+							items: [
+								{ label: 'Overview', slug: 'projects/store' },
+								{ label: 'Architecture', slug: 'projects/store/architecture' },
+								{ label: 'Development Guide', slug: 'projects/store/development' },
+								{ label: 'Deployment & Operations', slug: 'projects/store/operations' },
+							],
+						},
+						{ label: 'Shared Resources', slug: 'projects/shared-resources' },
 					],
 				},
 				{
