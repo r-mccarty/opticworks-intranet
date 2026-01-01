@@ -29,6 +29,9 @@ export default defineConfig({
 				{
 					label: 'IT Resources',
 					items: [
+						{ label: 'Infrastructure Overview', slug: 'it/infrastructure' },
+						{ label: 'Infisical (Secrets)', slug: 'it/infisical' },
+						{ label: 'Development Hardware', slug: 'it/hardware' },
 						{ label: 'Software & Tools', slug: 'it/software' },
 						{ label: 'Security Guidelines', slug: 'it/security' },
 						{ label: 'Support Tickets', slug: 'it/support' },
