@@ -106,6 +106,8 @@ p, li {
 /* ============================================
    HERO BUTTONS - High Contrast Fix
    ============================================ */
+/* Starlight uses .sl-link-button class for hero buttons */
+.hero .sl-link-button,
 .hero .action {
   display: inline-flex;
   align-items: center;
@@ -118,25 +120,29 @@ p, li {
   transition: all 0.15s ease;
 }
 
-/* Primary button: solid background with contrasting text */
+/* Primary button: solid background with WHITE text */
+.hero .sl-link-button.primary,
 .hero .action.primary {
   background: var(--button-primary-bg) !important;
   color: var(--button-primary-text) !important;
   border: none !important;
 }
 
+.hero .sl-link-button.primary:hover,
 .hero .action.primary:hover {
   background: var(--button-primary-hover) !important;
   transform: translateY(-1px);
 }
 
 /* Secondary/minimal button: outlined style */
+.hero .sl-link-button.minimal,
 .hero .action.minimal {
   background: transparent !important;
   color: var(--button-secondary-text) !important;
   border: 1px solid var(--button-secondary-border) !important;
 }
 
+.hero .sl-link-button.minimal:hover,
 .hero .action.minimal:hover {
   border-color: var(--sl-color-accent) !important;
   color: var(--sl-color-accent) !important;
