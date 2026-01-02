@@ -31,33 +31,25 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Getting Started',
+					label: 'Overview',
 					items: [
 						{ label: 'Welcome', slug: 'index' },
-						{ label: 'New Employee Onboarding', slug: 'getting-started/onboarding' },
+						{ label: 'Onboarding', slug: 'getting-started/onboarding' },
 					],
 				},
 				{
-					label: 'Employee Handbook',
+					label: 'Workspace & Access',
 					items: [
-						{ label: 'Company Culture', slug: 'handbook/culture' },
-						{ label: 'Benefits & Perks', slug: 'handbook/benefits' },
-						{ label: 'Time Off Policy', slug: 'handbook/time-off' },
-					],
-				},
-				{
-					label: 'IT Resources',
-					items: [
-						{ label: 'Infrastructure Overview', slug: 'it/infrastructure' },
-						{ label: 'Infisical (Secrets)', slug: 'it/infisical' },
-						{ label: 'Development Hardware', slug: 'it/hardware' },
+						{ label: 'Infrastructure', slug: 'it/infrastructure' },
+						{ label: 'Secrets (Infisical)', slug: 'it/infisical' },
+						{ label: 'Hardware Access', slug: 'it/hardware' },
 						{ label: 'Software & Tools', slug: 'it/software' },
-						{ label: 'Security Guidelines', slug: 'it/security' },
-						{ label: 'Support Tickets', slug: 'it/support' },
+						{ label: 'Security Notes', slug: 'it/security' },
+						{ label: 'Support', slug: 'it/support' },
 					],
 				},
 				{
-					label: 'Development',
+					label: 'Engineering Playbooks',
 					items: [
 						{ label: 'Development Setup', slug: 'development/setup' },
 						{ label: 'Code Standards', slug: 'development/standards' },
@@ -68,6 +60,7 @@ export default defineConfig({
 					label: 'Projects',
 					items: [
 						{ label: 'Overview', slug: 'projects' },
+						{ label: 'Agent Harness', slug: 'projects/agent-harness' },
 						{
 							label: 'hardwareOS',
 							items: [
@@ -95,6 +88,7 @@ export default defineConfig({
 								{ label: 'Deployment & Operations', slug: 'projects/store/operations' },
 							],
 						},
+						{ label: 'N8N Marketing Automation', slug: 'projects/n8n-marketing-automation' },
 						{ label: 'Lessons Learned', slug: 'projects/lessons-learned' },
 						{ label: 'Shared Resources', slug: 'projects/shared-resources' },
 					],
