@@ -44,8 +44,6 @@ export default defineConfig({
 						{ label: 'Secrets (Infisical)', slug: 'it/infisical' },
 						{ label: 'Hardware Access', slug: 'it/hardware' },
 						{ label: 'Software & Tools', slug: 'it/software' },
-						{ label: 'Security Notes', slug: 'it/security' },
-						{ label: 'Support', slug: 'it/support' },
 					],
 				},
 				{
