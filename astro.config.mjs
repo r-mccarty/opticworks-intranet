@@ -95,6 +95,7 @@ export default defineConfig({
 								{ label: 'Deployment & Operations', slug: 'projects/store/operations' },
 							],
 						},
+						{ label: 'Lessons Learned', slug: 'projects/lessons-learned' },
 						{ label: 'Shared Resources', slug: 'projects/shared-resources' },
 					],
 				},
@@ -106,6 +107,7 @@ export default defineConfig({
 							items: [
 								{ label: 'Overview', slug: 'products/rs-1' },
 								{ label: 'Quick Start', slug: 'products/rs-1/quick-start' },
+								{ label: 'Architecture', slug: 'products/rs-1/architecture' },
 								{ label: 'Hardware Overview', slug: 'products/rs-1/hardware' },
 								{ label: 'iOS App & RoomPlan', slug: 'products/rs-1/roomplan' },
 								{ label: 'Calibration & Tuning', slug: 'products/rs-1/calibration' },

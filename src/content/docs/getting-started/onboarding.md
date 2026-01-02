@@ -1,286 +1,123 @@
 ---
-title: New Employee Onboarding
-description: Welcome to OpticWorks! Your complete guide to getting started.
+title: New Employee & Agent Onboarding
+description: Verified onboarding steps sourced from OpticWorks repos and workspace docs.
 ---
 
-## Welcome to OpticWorks!
+## What This Page Covers
 
-Congratulations on joining the team! OpticWorks is building the future of presence sensing with mmWave radar technology. We're a small team working on hardware, firmware, open source, and e-commerce - and we're excited to have you on board.
+This onboarding guide is compiled from the **actual repo docs** used in OpticWorks workspaces and projects. It focuses on getting access, validating tooling, and following the real development workflows used in production.
 
-This guide will walk you through everything you need to get productive in your first few weeks.
+## 1) Verify Workspace Access (Coder + Agent Harness)
 
-## Your First Day
-
-### 1. Account Setup
-
-You should have received invites to:
-
-| Service | Check Your Email For | Action |
-|---------|---------------------|--------|
-| **Google Workspace** | Welcome email | Set up @optic.works email |
-| **Slack** | Workspace invite | Join and introduce yourself in #general |
-| **GitHub** | Organization invite | Accept and enable 2FA |
-| **Infisical** | Account invite | Create account, enable 2FA |
-| **1Password** | Vault invite | Create account, enable 2FA |
-
-:::caution[Enable 2FA Everywhere]
-Two-factor authentication is **required** for all OpticWorks accounts. We recommend using 1Password's built-in authenticator.
-:::
-
-### 2. Essential Slack Channels
-
-Join these channels on your first day:
-
-| Channel | Purpose |
-|---------|---------|
-| `#general` | Company-wide announcements |
-| `#engineering` | Technical discussions |
-| `#random` | Non-work chat and fun |
-| `#standup` | Daily async standups |
-| Your team channel | Team-specific discussions |
-
-### 3. Meet Your Manager
-
-Your manager will schedule a 1:1 to:
-- Welcome you and answer questions
-- Set initial goals and expectations
-- Assign your onboarding buddy
-- Plan your first week's meetings
-
-## First Week Checklist
-
-### Day 1-2: Setup
-
-- [ ] Complete all account setups (above)
-- [ ] Read this entire onboarding guide
-- [ ] Review [Company Culture](/handbook/culture/)
-- [ ] Set up your [development environment](/development/setup/)
-- [ ] Clone the repositories for your team
-
-### Day 3-4: Learn
-
-- [ ] Read documentation for your team's projects
-- [ ] Shadow team members in meetings
-- [ ] Review recent PRs and issues
-- [ ] Set up [Infisical CLI](/it/infisical/) for secret access
-
-### Day 5: Contribute
-
-- [ ] Pick up a "good first issue" from your team's backlog
-- [ ] Submit your first PR (documentation update is fine!)
-- [ ] Schedule 1:1s with key teammates
-
-## Understanding OpticWorks
-
-### What We Do
-
-OpticWorks develops mmWave radar-based presence sensing technology:
-
-1. **RS-1 Hardware Device** - Our flagship sensor fusion device combining radar and vision
-2. **Open Source Presence Engine** - ESP32-based presence detection for Home Assistant
-3. **OpticWorks Store** - E-commerce at optic.works selling our sensors
-
-### Our Tech Stack
-
-| Layer | Technologies |
-|-------|--------------|
-| **Hardware** | RV1106 SoC, ESP32, mmWave radar (LD2410/LD2450) |
-| **Firmware** | C, Go, ESPHome, RTOS |
-| **Backend** | Node.js, Medusa, PostgreSQL, Redis |
-| **Frontend** | Next.js 15, React, TypeScript, Tailwind |
-| **Infrastructure** | Hetzner, Cloudflare Workers/R2, GitHub Actions |
-| **Secrets** | Infisical |
-
-### Team Structure
-
-| Team | Focus Areas | Slack Channel |
-|------|-------------|---------------|
-| **Hardware** | RS-1, firmware, sensor fusion | #hardware-engineering |
-| **Web** | Store, customer experience | #web-engineering |
-| **Open Source** | Presence Engine, community | #open-source |
-| **Platform** | Infrastructure, CI/CD, DevOps | #platform |
-
-## Key Resources
-
-### Documentation
-
-| Resource | What You'll Find |
-|----------|------------------|
-| [Projects Overview](/projects/) | All engineering projects |
-| [Infrastructure](/it/infrastructure/) | Hetzner, Cloudflare, architecture |
-| [Infisical Guide](/it/infisical/) | Secret management |
-| [Development Hardware](/it/hardware/) | N100 nodes, RS-1 kits, ESP32 |
-| [Code Standards](/development/standards/) | Coding conventions |
-| [Git Workflow](/development/git-workflow/) | Branching and PR process |
-
-### Tools You'll Use Daily
-
-| Tool | Purpose | Setup |
-|------|---------|-------|
-| **Slack** | Communication | [slack.com/downloads](https://slack.com/downloads) |
-| **VS Code** | Code editor | [code.visualstudio.com](https://code.visualstudio.com) |
-| **GitHub** | Code & issues | github.com/r-mccarty |
-| **Infisical** | Secrets | `brew install infisical` |
-| **Docker** | Local services | [docker.com](https://docker.com) |
-
-### External Services
-
-| Service | Purpose | Access |
-|---------|---------|--------|
-| **Stripe** | Payments | Request from Finance |
-| **EasyPost** | Shipping | Request from Web team |
-| **Hetzner** | Servers | Request from Platform team |
-| **Cloudflare** | CDN/Edge | Request from Platform team |
-
-## Team-Specific Onboarding
-
-### Hardware Team
-
-After completing general onboarding:
-
-1. Request RS-1 dev kit from hardware lab
-2. Read [hardwareOS documentation](/projects/hardware-os/)
-3. Set up cross-compiler toolchain
-4. Run your first firmware build
-5. Shadow a firmware debugging session
-
-**First project ideas:**
-- Add a small feature to the fusion algorithm
-- Improve documentation for a component
-- Write unit tests for existing code
-
-### Web Team
-
-After completing general onboarding:
-
-1. Read [OpticWorks Store documentation](/projects/store/)
-2. Set up local Medusa backend
-3. Run the storefront locally
-4. Create a Stripe test account
-5. Process a test order end-to-end
-
-**First project ideas:**
-- Fix a UI bug on the storefront
-- Improve checkout validation
-- Add a new admin dashboard feature
-
-### Open Source Team
-
-After completing general onboarding:
-
-1. Build an ESP32 + LD2410 test device
-2. Read [Presence Engine documentation](/projects/presence-engine/)
-3. Set up Home Assistant test instance
-4. Flash and test the presence sensor
-5. Review community issues and PRs
-
-**First project ideas:**
-- Respond to community questions
-- Fix a reported bug
-- Improve calibration documentation
-
-### Platform Team
-
-After completing general onboarding:
-
-1. Get SSH access to staging servers
-2. Read [Infrastructure documentation](/it/infrastructure/)
-3. Review GitHub Actions workflows
-4. Set up Grafana access
-5. Shadow an on-call shift
-
-**First project ideas:**
-- Improve a deployment script
-- Add monitoring for a new metric
-- Document a runbook
-
-## Development Environment
-
-### Quick Setup
+OpticWorks workspaces are bootstrapped by the **agent-harness** repo. Confirm the following in your workspace:
 
 ```bash
-# 1. Install Homebrew (macOS) or apt packages (Linux)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# GitHub auth
+ gh auth status
 
-# 2. Install core tools
-brew install git node docker infisical/get-cli/infisical
+# Secrets injected from Infisical
+cat ~/.env.secrets | wc -l
 
-# 3. Configure git
-git config --global user.name "Your Name"
-git config --global user.email "you@optic.works"
+# Coder tools
+claude --version
+codex --version
 
-# 4. Clone repositories
-mkdir -p ~/workspace/opticworks && cd ~/workspace/opticworks
-git clone git@github.com:r-mccarty/opticworks-store.git
-git clone git@github.com:r-mccarty/hardwareOS.git
-git clone git@github.com:r-mccarty/presence-dectection-engine.git
-
-# 5. Login to Infisical
-infisical login
+# N100 access
+ssh n100 "hostname"
 ```
 
-For detailed setup: [Development Setup Guide](/development/setup/)
+If any of these fail, refer to the workspace troubleshooting steps in `agent-harness/docs/coder-workspace.md` and `agent-harness/docs/n100-coder-access.md`.
 
-## Your First 30 Days
+## 2) Clone Primary Repos
 
-### Week 1: Orientation
+Clone into `~/workspace/` for consistency. These are the main repos referenced in current workflows:
 
-- Complete account and environment setup
-- Read all documentation for your team's projects
-- Attend team meetings and standup
-- Meet with manager and teammates
-- Submit first PR (even if small)
+```bash
+# Core repos
+ gh repo clone r-mccarty/hardwareOS ~/workspace/hardwareOS
+ gh repo clone r-mccarty/presence-dectection-engine ~/workspace/presence-detection-engine
+ gh repo clone r-mccarty/opticworks-store ~/workspace/opticworks-store
+ gh repo clone r-mccarty/opticworks-intranet ~/workspace/opticworks-intranet
+ gh repo clone r-mccarty/n8n-marketing-automation ~/workspace/n8n-marketing-automation
+```
 
-### Week 2: Integration
+## 3) Understand the Two-Machine Pattern (Presence Engine)
 
-- Take on your first "good first issue"
-- Participate in code reviews
-- Ask questions in Slack (no question is too basic!)
-- Start building context on codebase
+The presence-detection-engine workflow uses **two environments**:
 
-### Week 3: Contribution
+- **Codespaces / local**: edit, run tests, commit, push.
+- **ubuntu-node**: USB-connected hardware flashing + Home Assistant access.
 
-- Work on larger tasks
-- Pair program with teammates
-- Contribute to documentation
-- Share feedback on onboarding experience
+This is required because the ESP32 hardware is physically attached to ubuntu-node and is not reachable from Codespaces. Follow the dedicated workflow in `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`.
 
-### Week 4: Ownership
+## 4) Project-Specific Quick Starts
 
-- Complete first significant feature/fix
-- Present work in team demo
-- Have 30-day check-in with manager
-- Set goals for next quarter
+### hardwareOS (RS-1)
 
-## Getting Help
+From `hardwareOS/docs/rs1/DEVELOPMENT.md` and `hardwareOS/README.md`:
 
-### Who to Ask
+```bash
+# Device build + deploy
+./dev_deploy.sh -r <DEVICE_IP>
 
-| Question Type | Who to Ask |
-|---------------|------------|
-| HR/Benefits | hr@optic.works |
-| IT/Access issues | #it-support or IT ticket |
-| Code questions | Your team channel or buddy |
-| Architecture decisions | Team lead |
-| Product questions | Product team |
+# Local tests
+make test
+# or
+go test ./...
 
-### Support Resources
+# UI dev
+cd ui && npm run dev
+```
 
-- **IT Tickets:** [Submit an IT ticket](/it/support/)
-- **Slack:** Ask in relevant channel
-- **1:1s:** Schedule time with teammates
-- **Pair Programming:** Request via Slack
+### presence-detection-engine
 
-## Feedback
+From `presence-detection-engine/README.md`:
 
-Your fresh perspective is valuable! Let us know:
+```bash
+cd esphome
+platformio test -e native
+yamllint esphome/ homeassistant/
+```
 
-- What's confusing in the documentation?
-- What tools could work better?
-- What would have helped during onboarding?
+Use ubuntu-node for flashing and Home Assistant verification.
 
-Share feedback in #general or directly with your manager.
+### opticworks-store
 
----
+From `opticworks-store/README.md`:
 
-Welcome to the team! We're glad you're here. 🎉
+```bash
+pnpm install
+pnpm run secrets:pull
+pnpm run dev
+```
+
+### n8n-marketing-automation
+
+Deployment runs on **N100** using Docker Compose (see `n8n-marketing-automation/SETUP.md` and `README.md`).
+
+```bash
+ssh n100
+cd /opt/n8n
+docker compose up -d
+```
+
+## 5) Operational Notes for New Agents
+
+- **Secrets**: Pulled from Infisical and stored in `~/.env.secrets`. Project-specific secrets live in repo docs (see `hardwareOS/docs/platform/SECRETS.md` and `opticworks-store/docs/SECRETS.md`).
+- **Device access**: Hardware flashing and Home Assistant access for the presence engine require ubuntu-node (documented in `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`).
+- **Deployments**: Each repo has its own deploy flow (see `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`, `hardwareOS/docs/rs1/DEVELOPMENT.md`).
+
+## Sources
+
+- `agent-harness/AGENTS.md`
+- `agent-harness/docs/coder-workspace.md`
+- `agent-harness/docs/n100-coder-access.md`
+- `hardwareOS/README.md`
+- `hardwareOS/docs/rs1/DEVELOPMENT.md`
+- `presence-detection-engine/README.md`
+- `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
+- `opticworks-store/README.md`
+- `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`
+- `opticworks-store/docs/SECRETS.md`
+- `n8n-marketing-automation/README.md`
+- `n8n-marketing-automation/SETUP.md`

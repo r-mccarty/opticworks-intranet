@@ -6,51 +6,49 @@ description: Internal documentation and resources for OpticWorks team members.
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <div class="hero">
-  <p class="tagline">Your one-stop hub for company resources, documentation, and tools.</p>
+  <p class="tagline">Source-verified docs for OpticWorks engineering, ops, and tooling.</p>
   <div class="actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-    <a class="sl-link-button primary" href="/getting-started/onboarding/" style="background: var(--sl-color-accent); color: #fff;">New Employee Onboarding</a>
-    <a class="sl-link-button minimal" href="/it/support/">IT Support</a>
+    <a class="sl-link-button primary" href="/getting-started/onboarding/" style="background: var(--sl-color-accent); color: #fff;">New Employee & Agent Onboarding</a>
+    <a class="sl-link-button minimal" href="/projects/">Projects Overview</a>
   </div>
 </div>
 
-Welcome to the OpticWorks intranet. Use the sidebar to navigate, or start with the links below.
-
-[Start onboarding](/getting-started/onboarding/) · [IT support](/it/support/)
+Use the sidebar to navigate, or start with the links below.
 
 ## Quick Links
 
 <CardGrid stagger>
 	<LinkCard
-		title="Employee Handbook"
-		description="Learn about our company culture, benefits, and policies."
-		href="/handbook/culture/"
-		icon="open-book"
+		title="Onboarding"
+		description="Workspace access, repos, and workflows."
+		href="/getting-started/onboarding/"
+		icon="user"
 	/>
 	<LinkCard
-		title="IT Resources"
-		description="Access software tools, security guidelines, and technical support."
+		title="Infrastructure"
+		description="Coder, N100, and N8N deployment."
 		href="/it/infrastructure/"
-		icon="laptop"
+		icon="server"
 	/>
 	<LinkCard
-		title="Development Guide"
-		description="Setup your development environment and learn our coding standards."
+		title="Development Setup"
+		description="Repo-specific setup and toolchain."
 		href="/development/setup/"
 		icon="seti:config"
 	/>
 	<LinkCard
-		title="Policies & Procedures"
-		description="Review company policies, compliance requirements, and procedures."
-		href="/policies/code-of-conduct/"
+		title="Lessons Learned"
+		description="Postmortem-driven learnings."
+		href="/projects/lessons-learned/"
 		icon="document"
 	/>
 </CardGrid>
 
-- [Employee Handbook](/handbook/culture/)
-- [IT Resources](/it/infrastructure/)
-- [Development Guide](/development/setup/)
-- [Policies & Procedures](/policies/code-of-conduct/)
+- [Onboarding](/getting-started/onboarding/)
+- [Infrastructure](/it/infrastructure/)
+- [Development Setup](/development/setup/)
+- [Lessons Learned](/projects/lessons-learned/)
 
 ## Announcements
 
-**Welcome to the new OpticWorks Intranet!** This documentation site is your central resource for all company information, tools, and processes. Use the navigation menu to explore different sections, or use the search function to find specific information quickly.
+This intranet is now sourced from audited repo documentation. If a page is marked as pending, it means no authoritative source was found during the audit.
