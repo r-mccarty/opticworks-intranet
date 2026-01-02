@@ -181,9 +181,10 @@ test.describe('Visual Design Validation', () => {
       await page.goto(BASE);
       await page.waitForLoadState('networkidle');
 
-      const themeToggle = page.locator('starlight-theme-select');
-      if (await themeToggle.isVisible()) {
-        await themeToggle.screenshot({ path: './screenshots/design-theme-toggle.png' });
+      const themeToggle = page.locator('starlight-theme-select select');
+      if (await themeToggle.count()) {
+        await expect(themeToggle.first()).toBeVisible();
+        await themeToggle.first().screenshot({ path: './screenshots/design-theme-toggle.png' });
       }
     });
   });

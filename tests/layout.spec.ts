@@ -35,8 +35,8 @@ test.describe('Layout and Visual Consistency', () => {
       await page.setViewportSize({ width: 1280, height: 720 });
       await page.goto('/');
 
-      const sidebar = page.locator('nav[aria-label="Main"], .sidebar, aside nav');
-      await expect(sidebar.first()).toBeVisible();
+      const sidebar = page.locator('#starlight__sidebar');
+      await expect(sidebar).toBeVisible();
     });
 
     test('should have all main navigation sections', async ({ page }) => {

@@ -110,8 +110,8 @@ test.describe('Responsive Design', () => {
       await page.goto('/');
 
       // Either sidebar is visible or menu button is present
-      const sidebar = page.locator('.sidebar, aside nav');
-      const menuButton = page.locator('[aria-label*="menu" i], button.menu-toggle');
+      const sidebar = page.locator('#starlight__sidebar');
+      const menuButton = page.locator('starlight-menu-button button, [aria-label*="menu" i]');
 
       const sidebarVisible = await sidebar.first().isVisible().catch(() => false);
       const menuButtonVisible = await menuButton.first().isVisible().catch(() => false);
@@ -128,8 +128,8 @@ test.describe('Responsive Design', () => {
     test('should display sidebar navigation', async ({ page }) => {
       await page.goto('/');
 
-      const sidebar = page.locator('nav[aria-label], .sidebar, aside nav');
-      await expect(sidebar.first()).toBeVisible();
+      const sidebar = page.locator('#starlight__sidebar');
+      await expect(sidebar).toBeVisible();
     });
 
     test('content should have proper max-width', async ({ page }) => {

@@ -6,7 +6,7 @@ test.describe('Theme and Dark Mode', () => {
       await page.goto('/');
 
       // Starlight includes a theme toggle
-      const themeToggle = page.locator('[data-theme-toggle], button:has([aria-label*="theme" i]), starlight-theme-select, [aria-label*="color scheme" i]');
+      const themeToggle = page.locator('starlight-theme-select select, [data-theme-toggle]');
       await expect(themeToggle.first()).toBeVisible();
     });
 
@@ -20,20 +20,15 @@ test.describe('Theme and Dark Mode', () => {
         (document.documentElement.classList.contains('dark') ? 'dark' : 'light')
       );
 
-      // Find and click theme toggle
-      const themeToggle = page.locator('starlight-theme-select button, [data-theme-toggle], button[aria-label*="theme" i]').first();
-      await themeToggle.click();
+      const themeSelect = page.locator('starlight-theme-select select').first();
+      await expect(themeSelect).toBeVisible();
 
-      // Wait for theme menu if it's a dropdown
-      const themeOption = page.locator('[data-theme-toggle] option, starlight-theme-select button, [role="menuitem"]');
-      if (await themeOption.count() > 0) {
-        // Select opposite theme
-        const targetTheme = initialTheme === 'dark' ? 'light' : 'dark';
-        const option = page.locator(`[value="${targetTheme}"], [data-theme="${targetTheme}"]`);
-        if (await option.count() > 0) {
-          await option.click();
-        }
-      }
+      const targetTheme = initialTheme === 'dark' ? 'light' : 'dark';
+      await themeSelect.selectOption(targetTheme);
+
+      await page.waitForFunction((theme) => {
+        return document.documentElement.dataset.theme === theme;
+      }, targetTheme);
     });
 
     test('should persist theme preference', async ({ page }) => {
@@ -63,14 +58,17 @@ test.describe('Theme and Dark Mode', () => {
   test.describe('Light Mode', () => {
     test.beforeEach(async ({ page }) => {
       await page.emulateMedia({ colorScheme: 'light' });
+      await page.addInitScript(() => {
+        localStorage.setItem('starlight-theme', 'light');
+      });
     });
 
     test('should use light color scheme', async ({ page }) => {
       await page.goto('/');
 
       const bgColor = await page.evaluate(() => {
-        const root = document.documentElement;
-        return getComputedStyle(root).backgroundColor;
+        const body = document.body;
+        return getComputedStyle(body).backgroundColor;
       });
 
       // Light mode should have light background
@@ -103,6 +101,9 @@ test.describe('Theme and Dark Mode', () => {
   test.describe('Dark Mode', () => {
     test.beforeEach(async ({ page }) => {
       await page.emulateMedia({ colorScheme: 'dark' });
+      await page.addInitScript(() => {
+        localStorage.setItem('starlight-theme', 'dark');
+      });
     });
 
     test('should use dark color scheme', async ({ page }) => {

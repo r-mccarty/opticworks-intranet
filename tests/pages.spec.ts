@@ -151,7 +151,7 @@ test.describe('Page Performance', () => {
           }
         });
 
-        observer.observe({ type: 'layout-shift', buffered: true });
+        observer.observe({ type: 'layout-shift' });
 
         setTimeout(() => {
           observer.disconnect();

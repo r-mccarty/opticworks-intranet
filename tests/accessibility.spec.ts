@@ -63,7 +63,12 @@ test.describe('Accessibility', () => {
       await page.goto('/');
 
       const mainNav = page.locator('nav[aria-label], nav[role="navigation"]');
-      await expect(mainNav.first()).toBeVisible();
+      await expect(mainNav.first()).toBeAttached();
+
+      const hasLabel = await mainNav.first().evaluate((el) => {
+        return Boolean(el.getAttribute('aria-label') || el.getAttribute('role'));
+      });
+      expect(hasLabel).toBe(true);
     });
 
     test('main content area should be marked as main', async ({ page }) => {

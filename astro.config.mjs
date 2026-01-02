@@ -9,6 +9,26 @@ export default defineConfig({
 		starlight({
 			title: 'OpticWorks Intranet',
 			description: 'Internal documentation and resources for OpticWorks team members',
+			head: [
+				{
+					tag: 'script',
+					attrs: { type: 'module' },
+					content: `
+						const ensureLabel = (selector, label) => {
+							document.querySelectorAll(selector).forEach((el) => {
+								if (!el.getAttribute('aria-label')) {
+									el.setAttribute('aria-label', label);
+								}
+							});
+						};
+
+						window.addEventListener('DOMContentLoaded', () => {
+							ensureLabel('starlight-theme-select select', 'Theme');
+							ensureLabel('starlight-lang-select select', 'Language');
+						});
+					`,
+				},
+			],
 			sidebar: [
 				{
 					label: 'Getting Started',

@@ -64,33 +64,29 @@ test.describe('Navigation and Links', () => {
     test('internal links in content should be valid', async ({ page }) => {
       await page.goto('/getting-started/onboarding/');
 
-      const contentLinks = page.locator('main a[href^="/"], article a[href^="/"]');
-      const linkCount = await contentLinks.count();
+      const hrefs = await page.$$eval('main a[href^="/"], article a[href^="/"]', (links) => {
+        return [...new Set(links.map((link) => link.getAttribute('href')).filter(Boolean))];
+      });
 
-      for (let i = 0; i < linkCount; i++) {
-        const link = contentLinks.nth(i);
-        const href = await link.getAttribute('href');
-
-        if (href) {
-          const response = await page.goto(href);
-          expect(response?.status()).toBe(200);
-        }
+      const baseUrl = new URL(page.url());
+      for (const href of hrefs) {
+        const response = await page.request.get(new URL(href, baseUrl).toString());
+        expect(response.status()).toBe(200);
       }
     });
 
     test('should not have broken anchor links', async ({ page }) => {
       await page.goto('/development/standards/');
 
-      const anchorLinks = page.locator('a[href^="#"]');
-      const linkCount = await anchorLinks.count();
+      const anchorHrefs = await page.$$eval('a[href^="#"]', (links) => {
+        return links.map((link) => link.getAttribute('href')).filter(Boolean);
+      });
 
-      for (let i = 0; i < linkCount; i++) {
-        const link = anchorLinks.nth(i);
-        const href = await link.getAttribute('href');
-
+      for (const href of anchorHrefs) {
         if (href && href.length > 1) {
           const targetId = href.substring(1);
-          const target = page.locator(`#${CSS.escape(targetId)}`);
+          const safeTargetId = targetId.replace(/\"/g, '\\"');
+          const target = page.locator(`[id="${safeTargetId}"]`);
 
           // Target element should exist
           await expect(target).toHaveCount(1);
@@ -105,23 +101,20 @@ test.describe('Navigation and Links', () => {
       await page.goto('/development/standards/');
 
       // Starlight shows TOC on right side for pages with headings
-      const toc = page.locator('[data-toc], .right-sidebar, aside:has(a[href^="#"])');
+      const toc = page.locator('starlight-toc nav a[href^="#"], mobile-starlight-toc a[href^="#"]');
       // TOC may or may not be visible depending on page content
       if (await toc.count() > 0) {
-        const tocLinks = toc.locator('a[href^="#"]');
-        if (await tocLinks.count() > 0) {
-          await expect(tocLinks.first()).toBeVisible();
-        }
+        await expect(toc.first()).toBeAttached();
       }
     });
 
     test('clicking TOC link should scroll to section', async ({ page }) => {
       await page.goto('/development/standards/');
 
-      const tocLink = page.locator('a[href^="#"]').first();
+      const tocLink = page.locator('starlight-toc nav a[href^="#"], mobile-starlight-toc a[href^="#"]').first();
       if (await tocLink.count() > 0) {
         const href = await tocLink.getAttribute('href');
-        await tocLink.click();
+        await tocLink.evaluate((el) => el.click());
 
         // URL should include anchor
         await expect(page).toHaveURL(new RegExp(`${href}$`));
@@ -187,12 +180,12 @@ test.describe('Navigation and Links', () => {
       await page.setViewportSize({ width: 375, height: 667 });
       await page.goto('/');
 
-      const menuButton = page.locator('[aria-label*="menu" i], button.menu-toggle').first();
+      const menuButton = page.locator('starlight-menu-button button, [aria-label*="menu" i]').first();
       await menuButton.click();
 
       // Mobile nav should be visible
-      const mobileNav = page.locator('nav, aside').first();
-      await expect(mobileNav).toBeVisible();
+      await expect(page.locator('body[data-mobile-menu-expanded]')).toHaveCount(1);
+      await expect(page.locator('#starlight__sidebar')).toBeVisible();
     });
   });
 

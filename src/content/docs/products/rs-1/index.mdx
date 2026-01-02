@@ -3,25 +3,37 @@ title: RS-1 User Manual
 description: Complete user guide for the OpticWorks RS-1 Presence Sensor
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 # OpticWorks RS-1 Presence Sensor
 
 Welcome to the RS-1, OpticWorks' flagship presence sensing device. The RS-1 combines mmWave radar with computer vision to deliver the most accurate presence detection available for smart homes and commercial spaces.
 
 <CardGrid>
-  <Card title="Quick Start" icon="rocket">
-    New to RS-1? Start with our [Quick Start Guide](/products/rs-1/quick-start/) to get up and running in minutes.
-  </Card>
-  <Card title="iOS App" icon="apple">
-    Download the OpticWorks app and learn about [RoomPlan setup](/products/rs-1/roomplan/).
-  </Card>
-  <Card title="Calibration" icon="setting">
-    Fine-tune your sensor with our [Calibration Guide](/products/rs-1/calibration/).
-  </Card>
-  <Card title="Troubleshooting" icon="warning">
-    Having issues? Check our [Troubleshooting Guide](/products/rs-1/troubleshooting/).
-  </Card>
+  <LinkCard
+    title="Quick Start"
+    description="New to RS-1? Get up and running in minutes."
+    href="/products/rs-1/quick-start/"
+    icon="rocket"
+  />
+  <LinkCard
+    title="iOS App"
+    description="Download the OpticWorks app and learn RoomPlan setup."
+    href="/products/rs-1/roomplan/"
+    icon="apple"
+  />
+  <LinkCard
+    title="Calibration"
+    description="Fine-tune your sensor with our calibration guide."
+    href="/products/rs-1/calibration/"
+    icon="setting"
+  />
+  <LinkCard
+    title="Troubleshooting"
+    description="Having issues? Check the troubleshooting guide."
+    href="/products/rs-1/troubleshooting/"
+    icon="warning"
+  />
 </CardGrid>
 
 ## What is the RS-1?
