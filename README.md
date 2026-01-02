@@ -56,7 +56,7 @@ All commands are run from the root of the project, from a terminal:
 
 ## 🎨 Customization
 
-This site uses the OpticWorks brand color `#61ee64` (bright green) throughout the theme. Custom styles are defined in `src/styles/custom.css`.
+This site uses the default Starlight theme for consistent, accessible styling.
 
 ## 📚 Content Sections
 
@@ -112,8 +112,7 @@ The sidebar is manually configured in `astro.config.mjs`. After adding new pages
 
 ### Styling
 
-- Custom styles: `src/styles/custom.css`
-- Brand color: `#61ee64` (OpticWorks green)
+- Default Starlight theme
 - Theme supports both light and dark modes
 
 ## 👀 Want to learn more?

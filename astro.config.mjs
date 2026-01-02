@@ -9,7 +9,6 @@ export default defineConfig({
 		starlight({
 			title: 'OpticWorks Intranet',
 			description: 'Internal documentation and resources for OpticWorks team members',
-			customCss: ['./src/styles/custom.css'],
 			sidebar: [
 				{
 					label: 'Getting Started',
