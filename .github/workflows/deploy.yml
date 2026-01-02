@@ -32,7 +32,13 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudflare R2
-        run: npx wrangler r2 object put opticworks-intranet --file=./dist --recursive
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            key="${file#dist/}"
+            content_type="$(file -b --mime-type "$file")"
+            npx wrangler r2 object put "opticworks-intranet/$key" --file="$file" --content-type "$content_type"
+          done < <(find dist -type f -print0)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
