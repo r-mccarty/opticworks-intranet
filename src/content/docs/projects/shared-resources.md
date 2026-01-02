@@ -35,3 +35,23 @@ The presence engine uses Codespaces/local for editing and ubuntu-node for flashi
 - `presence-detection-engine/CONTRIBUTING.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/docs/SECRETS.md`
+
+## Diagrams
+
+### Repo-to-Workflow Mapping
+
+```
+agent-harness -> workspace bootstrap
+hardwareOS    -> RS-1 device stack
+presence-engine -> ESP32 + HA
+opticworks-store -> storefront + Medusa
+n8n-marketing-automation -> N100 automation
+```
+
+### Deployment Surfaces
+
+```
+Cloudflare: storefront + intranet
+Hetzner: Medusa backend
+N100: Coder + N8N + Home Assistant
+```

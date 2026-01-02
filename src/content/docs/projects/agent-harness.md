@@ -26,3 +26,38 @@ From `agent-harness/AGENTS.md` and `agent-harness/docs/coder-workspace.md`:
 - `agent-harness/AGENTS.md`
 - `agent-harness/docs/coder-workspace.md`
 - `agent-harness/docs/n100-coder-access.md`
+
+## Diagrams
+
+### Workspace Bootstrap
+
+```
+Coder Template -> startup script -> agent-harness clone
+        |                |                 |
+        |                |                 +--> ~/AGENTS.md symlink
+        |                +--> ~/.env.secrets from Infisical
+        +--> tools install
+```
+
+### Secrets Injection
+
+```
+Infisical
+   |
+   +--> ~/.env.secrets (auto-sourced)
+           |
+           +--> gh auth
+           +--> CLAUDE/CODEX credentials
+           +--> ssh n100 key
+```
+
+### N100 Access Path
+
+```
+Coder workspace
+    |
+    +--> ssh n100
+            |
+            +--> Docker services (N8N, HA, cloudflared)
+            +--> USB / serial devices
+```

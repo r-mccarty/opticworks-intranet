@@ -41,3 +41,32 @@ hardwareOS/
 
 - `hardwareOS/README.md`
 - `hardwareOS/docs/rs1/RS1_ARCHITECTURE.md`
+
+## Diagrams
+
+### System Stack (RS-1)
+
+```
+Browser / iPhone
+      |
+   WebRTC
+      |
+Go App (fusion + worldstate)
+      |
+   gRPC + UART
+      |
+Native C (camera/NPU) + LD2450 Radar
+```
+
+### Data Flow
+
+```
+Radar -----> Hungarian -> Kalman -> WorldState -> WebRTC
+Camera ---> NPU ------->
+```
+
+### Dev Loop
+
+```
+Edit code -> dev_deploy.sh -> Device -> Verify logs
+```

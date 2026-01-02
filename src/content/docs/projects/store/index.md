@@ -27,3 +27,33 @@ pnpm run dev
 
 - `opticworks-store/README.md`
 - `opticworks-store/docs/SECRETS.md`
+
+## Diagrams
+
+### Store Topology
+
+```
+Browser -> optic.works (Workers)
+   |            |
+   |            +--> api.optic.works (Medusa)
+   |                    |
+   |                    +--> Postgres + Redis (Hetzner)
+   |
+Stripe + EasyPost -> Hookdeck -> webhooks
+```
+
+### Deploy Flow
+
+```
+push main
+   |
+Cloudflare (storefront)
+   |
+Ansible (Medusa backend)
+```
+
+### Checkout Flow (Simplified)
+
+```
+Cart -> Payment collection -> Stripe -> Order
+```

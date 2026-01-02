@@ -33,3 +33,27 @@ ssh n100 "sudo systemctl status tweet-api"
 - `n8n-marketing-automation/README.md`
 - `n8n-marketing-automation/SETUP.md`
 - `n8n-marketing-automation/docs/tweet-api-shim.md`
+
+## Diagrams
+
+### N8N Deployment (N100)
+
+```
+GitHub repo -> /opt/n8n -> docker compose up
+        |
+   Cloudflared tunnel
+        |
+   https://n8n.optic.works
+```
+
+### Tweet API Shim
+
+```
+N8N workflow -> HTTP -> tweet-api (localhost:5680) -> X API
+```
+
+### Ops Loop
+
+```
+Update repo -> docker compose pull -> docker compose up -d
+```

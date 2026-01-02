@@ -33,3 +33,44 @@ description: Canonical overview of OpticWorks repos and their purpose.
 - `opticworks-store/docs/reference/README.md`
 - `n8n-marketing-automation/README.md`
 - `n8n-marketing-automation/SETUP.md`
+
+## Meta Diagrams
+
+### Org Repo Map
+
+```
+                           OpticWorks
+                                |
+        +-----------------------+-----------------------+
+        |                       |                       |
+   agent-harness           hardwareOS           presence-detection-engine
+ (workspace boot)        (RS-1 platform)        (ESP32 + HA)
+        |                       |                       |
+        +-----------+-----------+-----------+-----------+
+                    |                       |
+            opticworks-store         n8n-marketing-automation
+        (e-commerce + Medusa)        (N100 automation)
+                    |
+             opticworks-intranet
+              (this docs site)
+```
+
+### Runtime Surfaces
+
+```
+Developer --> Coder Workspace --> N100 Host --> Hardware / Services
+   |                |                |
+   |                |                +--> N8N (docker compose)
+   |                +--> Infisical secrets
+   |                +--> GitHub access
+   +--> Repo edits  +--> ssh n100
+```
+
+### Secrets Flow
+
+```
+Infisical --> ~/.env.secrets --> Coder workspace shell
+     |            |                 |
+     |            +--> gh auth       +--> repo-specific tools
+     +--> service tokens             +--> deploy scripts
+```

@@ -27,3 +27,35 @@ From `presence-detection-engine/README.md`:
 - `presence-detection-engine/docs/ARCHITECTURE.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `presence-detection-engine/docs/quickstart.md`
+
+## Diagrams
+
+### Two-Machine Workflow
+
+```
+Codespace/local (edit + test)
+          |
+       git push
+          |
+ubuntu-node (USB flash + HA)
+          |
+       ESP32 + LD2410
+```
+
+### Engine Pipeline
+
+```
+LD2410 still energy
+      |
+   z-score
+      |
+4-state machine
+      |
+HA entities (binary + telemetry)
+```
+
+### Home Assistant Integration
+
+```
+ESPHome device -> HA auto-discovery -> dashboards/helpers
+```
