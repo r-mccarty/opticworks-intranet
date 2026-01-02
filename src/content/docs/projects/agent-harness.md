@@ -61,3 +61,13 @@ Coder workspace
             +--> Docker services (N8N, HA, cloudflared)
             +--> USB / serial devices
 ```
+
+## Intranet Sync (Source-of-Truth)
+
+The intranet mirrors `agent-harness` docs into `src/content/docs/sources/agent-harness/` for browsing. To refresh the mirror:
+
+```bash
+./scripts/sync-agent-harness.sh
+```
+
+This copies `agent-harness/AGENTS.md` and `agent-harness/docs/` into the intranet repo. The synced files are listed at `/sources/agent-harness/`.
