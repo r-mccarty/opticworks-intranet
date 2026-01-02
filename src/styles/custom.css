@@ -1,108 +1,103 @@
 /**
- * OpticWorks Intranet - Apple-inspired Clean Design
+ * OpticWorks Intranet - Unraid-inspired Docs Styling
  *
- * Design principles:
- * - High contrast text (WCAG AA minimum)
- * - Clean, minimal color palette
- * - Generous whitespace
- * - Clear visual hierarchy
- * - Subtle shadows and borders
+ * Goals:
+ * - Higher contrast for readability
+ * - Warm neutrals with bold orange accents
+ * - Clear hierarchy and accessible focus states
  */
 
 /* ============================================
    FONTS
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap');
 
 /* ============================================
    LIGHT THEME (Default)
    ============================================ */
 :root {
   /* Typography */
-  --sl-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --sl-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --sl-font: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  --sl-font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, monospace;
 
-  /*
-   * Color palette - Apple-inspired neutrals
-   * High contrast: dark text on light backgrounds
-   */
+  /* Brand + palette inspired by Unraid */
   --sl-color-white: #ffffff;
-  --sl-color-gray-1: #f5f5f7;  /* Apple light gray */
-  --sl-color-gray-2: #e8e8ed;
-  --sl-color-gray-3: #d2d2d7;
-  --sl-color-gray-4: #86868b;  /* Apple secondary text */
-  --sl-color-gray-5: #6e6e73;
-  --sl-color-gray-6: #1d1d1f;  /* Apple primary text */
+  --sl-color-gray-1: #f7f1ec;
+  --sl-color-gray-2: #eee4db;
+  --sl-color-gray-3: #dbcfc4;
+  --sl-color-gray-4: #9c8f86;
+  --sl-color-gray-5: #6d6158;
+  --sl-color-gray-6: #2b231f;
   --sl-color-black: #000000;
 
-  /* Accent - Apple blue */
-  --sl-color-accent-low: #e8f2ff;
-  --sl-color-accent: #0071e3;  /* Apple blue */
-  --sl-color-accent-high: #0077ed;
+  --sl-color-accent-low: #ffe1da;
+  --sl-color-accent: #e94129;
+  --sl-color-accent-high: #c73623;
 
-  /* Text - HIGH CONTRAST */
-  --sl-color-text: #1d1d1f;
-  --sl-color-text-accent: #0071e3;
+  /* Text */
+  --sl-color-text: #1f1a17;
+  --sl-color-text-accent: #e94129;
 
   /* Backgrounds */
-  --sl-color-bg: #ffffff;
-  --sl-color-bg-nav: rgba(255, 255, 255, 0.8);
-  --sl-color-bg-sidebar: #f5f5f7;
+  --sl-color-bg: #fbf9f7;
+  --sl-color-bg-gradient: radial-gradient(1200px 500px at 12% -10%, #fff5ef 0%, #fbf9f7 55%, #f7f1ec 100%);
+  --sl-color-bg-nav: rgba(251, 249, 247, 0.88);
+  --sl-color-bg-sidebar: #f3eee8;
 
   /* Component colors */
-  --table-header-bg: #f5f5f7;
-  --table-header-text: #1d1d1f;
-  --table-border: #d2d2d7;
-  --table-cell-text: #1d1d1f;
+  --table-header-bg: #f3eee8;
+  --table-header-text: #1f1a17;
+  --table-border: #dbcfc4;
+  --table-cell-text: #1f1a17;
 
-  --code-bg: #f5f5f7;
-  --code-text: #1d1d1f;
-  --code-border: #e8e8ed;
+  --code-bg: #f6efe9;
+  --code-text: #2b231f;
+  --code-border: #e6dbd2;
 
   --card-bg: #ffffff;
-  --card-border: #e8e8ed;
-  --card-text: #1d1d1f;
-  --card-text-secondary: #6e6e73;
+  --card-border: #e6dbd2;
+  --card-text: #1f1a17;
+  --card-text-secondary: #6d6158;
 }
 
 /* ============================================
    DARK THEME
    ============================================ */
 :root[data-theme='dark'] {
-  --sl-color-white: #f5f5f7;
-  --sl-color-gray-1: #1d1d1f;
-  --sl-color-gray-2: #2d2d2f;
-  --sl-color-gray-3: #3d3d3f;
-  --sl-color-gray-4: #86868b;
-  --sl-color-gray-5: #a1a1a6;
-  --sl-color-gray-6: #f5f5f7;
+  --sl-color-white: #f7f1ec;
+  --sl-color-gray-1: #171513;
+  --sl-color-gray-2: #1f1c19;
+  --sl-color-gray-3: #2a2521;
+  --sl-color-gray-4: #94867c;
+  --sl-color-gray-5: #b3a69d;
+  --sl-color-gray-6: #f7f1ec;
   --sl-color-black: #000000;
 
-  --sl-color-accent-low: rgba(0, 113, 227, 0.15);
-  --sl-color-accent: #2997ff;  /* Apple blue for dark */
-  --sl-color-accent-high: #6cb6ff;
+  --sl-color-accent-low: rgba(243, 98, 45, 0.18);
+  --sl-color-accent: #f3622d;
+  --sl-color-accent-high: #ff8a5c;
 
-  --sl-color-text: #f5f5f7;
-  --sl-color-text-accent: #2997ff;
+  --sl-color-text: #f7f1ec;
+  --sl-color-text-accent: #f3622d;
 
-  --sl-color-bg: #000000;
-  --sl-color-bg-nav: rgba(0, 0, 0, 0.8);
-  --sl-color-bg-sidebar: #1d1d1f;
+  --sl-color-bg: #12100f;
+  --sl-color-bg-gradient: radial-gradient(1200px 500px at 12% -10%, #1c1714 0%, #12100f 55%, #0f0d0c 100%);
+  --sl-color-bg-nav: rgba(18, 16, 15, 0.88);
+  --sl-color-bg-sidebar: #171513;
 
-  /* Component colors - dark mode */
-  --table-header-bg: #2d2d2f;
-  --table-header-text: #f5f5f7;
-  --table-border: #3d3d3f;
-  --table-cell-text: #f5f5f7;
+  --table-header-bg: #1f1c19;
+  --table-header-text: #f7f1ec;
+  --table-border: #2a2521;
+  --table-cell-text: #f7f1ec;
 
-  --code-bg: #1d1d1f;
-  --code-text: #f5f5f7;
-  --code-border: #2d2d2f;
+  --code-bg: #1a1715;
+  --code-text: #f7f1ec;
+  --code-border: #2a2521;
 
-  --card-bg: #1d1d1f;
-  --card-border: #2d2d2f;
-  --card-text: #f5f5f7;
-  --card-text-secondary: #a1a1a6;
+  --card-bg: #161412;
+  --card-border: #2a2521;
+  --card-text: #f7f1ec;
+  --card-text-secondary: #b3a69d;
 }
 
 /* ============================================
@@ -115,20 +110,37 @@ html {
 
 body {
   color: var(--sl-color-text);
-  background: var(--sl-color-bg);
+  background-color: var(--sl-color-bg);
+  background-image: var(--sl-color-bg-gradient);
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--sl-color-text);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-family: 'Space Grotesk', 'Source Sans 3', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
-
-h1 { font-weight: 700; }
 
 p, li {
   color: var(--sl-color-text);
   line-height: 1.7;
+}
+
+/* Section dividers */
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+  position: relative;
+  scroll-margin-top: 6.5rem;
+}
+
+.sl-markdown-content h2::after {
+  content: '';
+  display: block;
+  height: 3px;
+  margin-top: 0.35rem;
+  width: 2.75rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--sl-color-accent), transparent);
 }
 
 /* ============================================
@@ -142,39 +154,84 @@ p, li {
   color: var(--sl-color-gray-5) !important;
 }
 
-/* Hero Buttons - Apple style */
 .hero .sl-link-button,
 .hero .action {
   padding: 0.75rem 1.5rem;
-  border-radius: 980px; /* Apple pill shape */
-  font-weight: 500;
+  border-radius: 999px;
+  font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .hero .sl-link-button.primary,
 .hero .action.primary {
-  background: var(--sl-color-text) !important;
-  color: var(--sl-color-bg) !important;
+  background: var(--sl-color-accent) !important;
+  color: #ffffff !important;
   border: none !important;
+  box-shadow: 0 8px 18px rgba(233, 65, 41, 0.25);
 }
 
 .hero .sl-link-button.primary:hover,
 .hero .action.primary:hover {
-  opacity: 0.85;
+  transform: translateY(-1px);
+  background: var(--sl-color-accent-high) !important;
 }
 
 .hero .sl-link-button.minimal,
 .hero .action.minimal {
   background: transparent !important;
   color: var(--sl-color-accent) !important;
-  border: none !important;
+  border: 1px solid var(--sl-color-accent) !important;
 }
 
 .hero .sl-link-button.minimal:hover,
 .hero .action.minimal:hover {
-  text-decoration: underline;
+  background: var(--sl-color-accent-low) !important;
+}
+
+/* ============================================
+   BUTTONS & BADGES
+   ============================================ */
+.sl-link-button {
+  border-radius: 999px;
+  font-weight: 600;
+  border: 1px solid var(--sl-color-gray-3);
+  background: var(--sl-color-white);
+  color: var(--sl-color-text);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sl-link-button:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-1px);
+}
+
+.sl-link-button.primary {
+  background: var(--sl-color-accent);
+  color: #ffffff;
+  border-color: var(--sl-color-accent);
+}
+
+.sl-link-button.primary:hover {
+  background: var(--sl-color-accent-high);
+}
+
+.sl-badge,
+.badge,
+.tag,
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--sl-color-gray-3);
 }
 
 /* ============================================
@@ -183,9 +240,10 @@ p, li {
 table {
   border-collapse: collapse;
   border: 1px solid var(--table-border);
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
   width: 100%;
+  background: var(--sl-color-white);
 }
 
 th {
@@ -213,7 +271,7 @@ tr:last-child td {
 pre {
   background: var(--code-bg) !important;
   border: 1px solid var(--code-border) !important;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 1rem;
   overflow-x: auto;
 }
@@ -223,7 +281,6 @@ pre code {
   background: transparent !important;
 }
 
-/* Inline code */
 :not(pre) > code {
   background: var(--code-bg) !important;
   color: var(--sl-color-text) !important;
@@ -241,23 +298,24 @@ pre code {
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 1.25rem;
-  transition: all 0.2s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
   border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
 }
 
 .card .title {
   color: var(--card-text) !important;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .card .body {
   color: var(--card-text-secondary);
 }
 
-/* Card icons */
 .card .icon svg {
   color: var(--sl-color-accent) !important;
 }
@@ -267,26 +325,27 @@ pre code {
    ============================================ */
 header.header {
   background: var(--sl-color-bg-nav);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--sl-color-gray-2);
 }
 
 .site-title {
   color: var(--sl-color-text) !important;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-/* Sidebar */
 .sidebar-pane {
   background: var(--sl-color-bg-sidebar);
+  border-right: 1px solid var(--sl-color-gray-2);
 }
 
 nav.sidebar a {
   color: var(--sl-color-text);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.5rem 0.75rem;
-  transition: all 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 nav.sidebar a:hover {
@@ -297,14 +356,13 @@ nav.sidebar a:hover {
 nav.sidebar a[aria-current="page"] {
   background: var(--sl-color-accent-low);
   color: var(--sl-color-accent);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Sidebar group labels */
 .sidebar-content .top-level > li > details > summary,
 .sidebar-content .top-level > li > a {
   color: var(--sl-color-text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* ============================================
@@ -313,6 +371,7 @@ nav.sidebar a[aria-current="page"] {
 a {
   color: var(--sl-color-accent);
   text-decoration: none;
+  text-underline-offset: 2px;
 }
 
 a:hover {
@@ -323,14 +382,28 @@ a:hover {
   color: var(--sl-color-accent);
 }
 
+.sl-markdown-content a[href^="http"]:not([href*="opticworks"])::after {
+  content: "↗";
+  display: inline-block;
+  margin-left: 0.25em;
+  font-size: 0.75em;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.sl-markdown-content a[href^="http"]:not([href*="opticworks"]):hover::after {
+  transform: translate(1px, -1px);
+}
+
 /* ============================================
    BLOCKQUOTES
    ============================================ */
 blockquote {
-  border-left: 3px solid var(--sl-color-accent);
+  border-left: 4px solid var(--sl-color-accent);
   background: var(--sl-color-accent-low);
   padding: 1rem 1.25rem;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 10px 10px 0;
   margin: 1.5rem 0;
   color: var(--sl-color-text);
 }
@@ -341,16 +414,37 @@ blockquote p {
 }
 
 /* ============================================
+   DETAILS / ACCORDION
+   ============================================ */
+details {
+  border: 1px solid var(--sl-color-gray-3);
+  border-radius: 10px;
+  padding: 0.5rem 0.75rem;
+  background: var(--sl-color-white);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+}
+
+details[open] {
+  border-color: var(--sl-color-accent);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ============================================
    CALLOUTS / ASIDES
    ============================================ */
 .starlight-aside {
-  border-radius: 8px;
+  border-radius: 10px;
   border-left-width: 4px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
 }
 
 .starlight-aside .starlight-aside__title {
   color: var(--sl-color-text);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .starlight-aside p {
@@ -378,9 +472,9 @@ starlight-toc a[aria-current="true"] {
    SEARCH
    ============================================ */
 .pagefind-ui__search-input {
-  background: var(--sl-color-bg) !important;
+  background: var(--sl-color-white) !important;
   border: 1px solid var(--sl-color-gray-3) !important;
-  border-radius: 8px !important;
+  border-radius: 10px !important;
   color: var(--sl-color-text) !important;
 }
 
@@ -398,7 +492,7 @@ starlight-toc a[aria-current="true"] {
    ============================================ */
 .pagination-links a {
   border: 1px solid var(--sl-color-gray-2);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--sl-color-text);
 }
 
@@ -420,7 +514,28 @@ starlight-toc a[aria-current="true"] {
 }
 
 .sl-markdown-content li::marker {
-  color: var(--sl-color-gray-4);
+  color: var(--sl-color-gray-5);
+}
+
+/* ============================================
+   KBD + HR
+   ============================================ */
+kbd {
+  display: inline-block;
+  padding: 0.15rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid var(--sl-color-gray-3);
+  background: var(--sl-color-white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.sl-markdown-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sl-color-gray-3), transparent);
+  margin: 2rem 0;
 }
 
 /* ============================================
@@ -433,7 +548,6 @@ starlight-toc a[aria-current="true"] {
 
 /* ============================================
    EXPRESSIVE CODE OVERRIDES
-   Starlight uses Expressive Code for syntax highlighting
    ============================================ */
 .expressive-code {
   --ec-brdCol: var(--code-border) !important;
@@ -448,11 +562,25 @@ starlight-toc a[aria-current="true"] {
   background: var(--code-bg) !important;
 }
 
-/* Code frame header */
 .expressive-code .header {
   background: var(--code-bg) !important;
   border-bottom-color: var(--code-border) !important;
   color: var(--sl-color-text) !important;
+}
+
+/* ============================================
+   DARK THEME ADJUSTMENTS
+   ============================================ */
+:root[data-theme='dark'] table {
+  background: var(--sl-color-gray-2);
+}
+
+:root[data-theme='dark'] details {
+  background: var(--sl-color-gray-2);
+}
+
+:root[data-theme='dark'] kbd {
+  background: var(--sl-color-gray-2);
 }
 
 /* ============================================
