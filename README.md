@@ -8,7 +8,7 @@ Internal documentation and resources for OpticWorks team members. This site prov
 
 This intranet is deployed as a secure, internal knowledge base using modern cloud infrastructure:
 
-- **Hosting**: Cloudflare R2 (zero egress fees for static site hosting)
+- **Hosting**: Cloudflare Pages (static site hosting)
 - **Authentication**: Google Cloud Identity/Workspace via OIDC
 - **Access Control**: Cloudflare Access (Zero Trust) - only @optic.works emails
 - **Domain**: [https://intranet.optic.works](https://intranet.optic.works)

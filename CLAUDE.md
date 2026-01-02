@@ -61,36 +61,26 @@ Files in `src/content/docs/` are automatically exposed as routes based on their 
 
 ## Deployment
 
-The site is deployed to Google Cloud Storage as a static website.
+The site is deployed to Cloudflare Pages via GitHub Actions.
 
 ### Initial Deployment Setup
 
-Bucket: `gs://opticworks-intranet/`
-- Configured with website settings (index.html, 404.html)
-- Requires public access to be enabled in GCP Console (organization policy prevents CLI access)
+Cloudflare Pages project: `opticworks-intranet`
+- Build command: `npm run build`
+- Output directory: `dist`
 
 ### Deploy Updates
 
-Build and deploy to GCS:
+Build and deploy through GitHub Actions:
 ```bash
-npm run build
-gsutil -m rsync -r -c -d dist/ gs://opticworks-intranet/
-```
-
-Set cache headers (run after first upload or when assets change):
-```bash
-# Cache hashed assets for 1 year (immutable)
-gsutil -m setmeta -h "Cache-Control:public, max-age=31536000, immutable" "gs://opticworks-intranet/_astro/*"
-
-# Cache HTML files for 1 hour
-gsutil -m setmeta -h "Cache-Control:public, max-age=3600" "gs://opticworks-intranet/**/*.html"
+git add .
+git commit -m "Update docs"
+git push origin main
 ```
 
 ### Access URL
 
 The site is accessible at:
-- **Primary URL**: `https://storage.googleapis.com/opticworks-intranet/index.html`
+- **Primary URL**: `https://intranet.optic.works`
 
-**Note**: Astro is configured with `base: '/opticworks-intranet'` to ensure assets load correctly from this URL structure.
-
-For HTTPS with a custom domain, configure a Cloud Load Balancer with Cloud CDN pointing to the bucket backend.
+Cloudflare Access enforces authentication for @optic.works users.

@@ -1,10 +1,10 @@
 # Deployment Guide: OpticWorks Intranet
 
-This guide provides complete instructions for deploying the OpticWorks Intranet to Cloudflare R2 with Zero Trust authentication.
+This guide provides complete instructions for deploying the OpticWorks Intranet to Cloudflare Pages with Zero Trust authentication.
 
 ## Architecture Overview
 
-- **Hosting**: Cloudflare R2 bucket (zero egress fees for static site hosting)
+- **Hosting**: Cloudflare Pages (static site hosting)
 - **Authentication**: Google Cloud Identity/Workspace as Identity Provider (IdP) via OIDC
 - **Access Control**: Cloudflare Access (Zero Trust)
 - **Domain**: `intranet.optic.works`
@@ -36,26 +36,27 @@ This guide provides complete instructions for deploying the OpticWorks Intranet 
 7. Wait for DNS propagation (can take up to 24 hours, typically much faster)
 8. Cloudflare will send an email when your site is active
 
-### 1.3 Create an R2 Bucket
+### 1.3 Create a Cloudflare Pages Project
 
-1. In the Cloudflare dashboard, navigate to **R2** in the left sidebar
-2. If this is your first R2 bucket, click **Purchase R2** and accept the terms
-   - R2 includes 10 GB storage and unlimited egress on the free tier
-3. Click **Create bucket**
-4. Enter bucket name: `opticworks-intranet`
-5. Choose a location hint (e.g., **North America (ENAM)**)
-6. Click **Create bucket**
+1. In the Cloudflare dashboard, navigate to **Pages** in the left sidebar
+2. Click **Create a project**
+3. Connect the GitHub repository: `r-mccarty/opticworks-intranet`
+4. Configure the build:
+   - **Framework preset**: Astro
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+5. Click **Save and Deploy**
 
-> **Note**: The R2 bucket must remain **private**. Do not enable public access. All access will be controlled through Cloudflare Access.
+> **Note**: If you plan to deploy exclusively through GitHub Actions, you still need the Pages project created so the workflow can publish to it.
 
 ### 1.4 Generate an API Token
 
 1. In the Cloudflare dashboard, click on your profile icon (top right)
 2. Go to **My Profile** → **API Tokens**
 3. Click **Create Token**
-4. Use the **Edit Cloudflare Workers** template or create a custom token with these permissions:
-   - **Account** → **Cloudflare R2** → **Edit**
-5. Set **Account Resources** to the account containing your R2 bucket
+4. Use the **Edit Cloudflare Pages** template or create a custom token with these permissions:
+   - **Account** → **Cloudflare Pages** → **Edit**
+5. Set **Account Resources** to the account containing your Pages project
 6. Optionally set a TTL (time to live) for security
 7. Click **Continue to summary** → **Create Token**
 8. **IMPORTANT**: Copy the token immediately and store it securely
@@ -64,7 +65,7 @@ This guide provides complete instructions for deploying the OpticWorks Intranet 
 
 ### 1.5 Find Your Cloudflare Account ID
 
-1. In the Cloudflare dashboard, go to **R2** or any **Workers** page
+1. In the Cloudflare dashboard, go to **Pages** or any **Workers** page
 2. Look for your **Account ID** in the right sidebar
 3. Copy this ID - it will be used as `CLOUDFLARE_ACCOUNT_ID` in GitHub
 
@@ -90,7 +91,7 @@ This guide provides complete instructions for deploying the OpticWorks Intranet 
 
 1. The GitHub Actions workflow (`.github/workflows/deploy.yml`) will run automatically on:
    - Any push to the `main` branch
-   - Manual trigger via **Actions** tab → **Deploy to Cloudflare R2** → **Run workflow**
+   - Manual trigger via **Actions** tab → **Deploy to Cloudflare Pages** → **Run workflow**
 2. To verify the first deployment:
    - Go to the **Actions** tab in your GitHub repository
    - You should see a workflow run in progress or completed
@@ -173,17 +174,17 @@ You need **Google Workspace Admin** access to complete this step.
    - **Value**: `@optic.works`
 3. Click **Next** → **Add application**
 
-### 3.5 Connect Custom Domain to R2 Bucket
+### 3.5 Connect Custom Domain to Cloudflare Pages
 
-1. In the Cloudflare dashboard, go to **R2** → **opticworks-intranet** bucket
-2. Click the **Settings** tab
-3. Under **Public access**, click **Connect Domain**
+1. In the Cloudflare dashboard, go to **Pages** → **opticworks-intranet**
+2. Click **Custom domains**
+3. Click **Set up a custom domain**
 4. Enter the custom domain: `intranet.optic.works`
 5. Click **Continue**
-6. Cloudflare will automatically create a DNS record and enable HTTPS
+6. Cloudflare will create the DNS record and enable HTTPS
 7. Wait a few minutes for DNS propagation
 
-> **Important**: Ensure the R2 bucket itself remains **private**. The custom domain connection routes traffic through Cloudflare Access, which handles authentication.
+> **Important**: The custom domain connection routes traffic through Cloudflare Access, which handles authentication.
 
 ---
 
@@ -195,10 +196,10 @@ You need **Google Workspace Admin** access to complete this step.
 2. Verify that a CNAME record exists for `intranet.optic.works`:
    - **Type**: `CNAME`
    - **Name**: `intranet`
-   - **Target**: (automatically created by Cloudflare when connecting the domain to R2)
+   - **Target**: (automatically created by Cloudflare when connecting the domain to Pages)
    - **Proxy status**: `Proxied` (orange cloud icon)
 3. If the record doesn't exist, Cloudflare should have created it automatically in Section 3.5
-   - If you need to create it manually, use the target provided by Cloudflare R2
+   - If you need to create it manually, use the target provided by Cloudflare Pages
 
 ### 4.2 Test DNS Propagation
 
@@ -217,7 +218,7 @@ You need **Google Workspace Admin** access to complete this step.
 4. Upon successful authentication, you should see the OpticWorks Intranet homepage
 
 > **Troubleshooting**:
-> - If you get a 404 error, ensure the R2 bucket has content (check that the GitHub Actions workflow deployed successfully)
+> - If you get a 404 error, ensure the Pages project has a successful deployment (check that the GitHub Actions workflow deployed successfully)
 > - If you can't log in, verify the Google OAuth credentials and that your email ends with `@optic.works`
 > - If you see a Cloudflare error page, check the Access policy configuration
 
@@ -250,7 +251,7 @@ This ensures the site is rebuilt daily even if no code changes occur, which can 
    git commit -m "Update documentation"
    git push origin main
    ```
-3. GitHub Actions will automatically build and deploy to Cloudflare R2
+3. GitHub Actions will automatically build and deploy to Cloudflare Pages
 4. Changes will be live in 2-5 minutes
 
 ### Managing Access
@@ -265,7 +266,7 @@ To update who can access the intranet:
 
 - **GitHub Actions**: View deployment logs in the **Actions** tab of your repository
 - **Cloudflare Analytics**: View traffic and access logs in **Zero Trust** → **Analytics**
-- **R2 Metrics**: View storage usage in **R2** → **opticworks-intranet** → **Metrics**
+- **Pages Analytics**: View build and deployment history in **Pages** → **opticworks-intranet**
 
 ---
 
@@ -274,17 +275,16 @@ To update who can access the intranet:
 1. **API Token Security**:
    - Never commit API tokens to the repository
    - Rotate API tokens periodically
-   - Use minimal permissions (R2 Edit only)
+   - Use minimal permissions (Pages Edit only)
 
 2. **Access Control**:
    - Regularly review who has access in Cloudflare Zero Trust
    - Monitor access logs for suspicious activity
    - Consider enabling Multi-Factor Authentication (MFA) for Google Workspace
 
-3. **R2 Bucket**:
-   - Keep the bucket **private** at all times
-   - Do not enable direct public access
-   - All traffic should flow through Cloudflare Access
+3. **Pages Project**:
+   - Keep the project access controlled via Cloudflare Access
+   - Avoid exposing the default `.pages.dev` URL publicly
 
 4. **GitHub Repository**:
    - Enable branch protection on the `main` branch
@@ -297,7 +297,7 @@ To update who can access the intranet:
 
 For issues or questions:
 
-- **Deployment issues**: Check GitHub Actions logs and Cloudflare R2 metrics
+- **Deployment issues**: Check GitHub Actions logs and Cloudflare Pages deployments
 - **Authentication issues**: Review Cloudflare Zero Trust logs and Google OAuth settings
 - **Content issues**: See the [README.md](./README.md) for contribution guidelines
 
@@ -306,13 +306,13 @@ For issues or questions:
 ## Success Checklist
 
 - [ ] Cloudflare account created and `optic.works` domain added
-- [ ] R2 bucket `opticworks-intranet` created and set to private
+- [ ] Cloudflare Pages project `opticworks-intranet` created
 - [ ] API token generated and stored securely
 - [ ] GitHub secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` configured
 - [ ] GitHub Actions workflow runs successfully
 - [ ] Cloudflare Zero Trust enabled with Google as IdP
 - [ ] Access application created for `intranet.optic.works`
 - [ ] Access policy restricts access to `@optic.works` emails only
-- [ ] Custom domain connected to R2 bucket
+- [ ] Custom domain connected to Pages project
 - [ ] DNS records configured and propagated
 - [ ] Site accessible at `https://intranet.optic.works` with authentication required
