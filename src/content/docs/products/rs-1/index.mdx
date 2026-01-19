@@ -1,42 +1,45 @@
 ---
 title: RS-1 User Manual
-description: RS-1 documentation index backed by hardwareOS sources.
+description: RS-1 documentation index sourced from the rs-1 repo.
 ---
 
 import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 # OpticWorks RS-1
 
-The RS-1 is OpticWorks' flagship vision + radar sensor fusion device built on hardwareOS. Its core capabilities (fusion, 30Hz WorldState streaming, Kalman filtering, Hungarian association, RoomPlan calibration) are documented in the hardwareOS repo.
+RS-1 is OpticWorks' presence sensor family built on a single PCBA with selective population. It runs HardwareOS (ESP-IDF firmware) and integrates with Home Assistant via the ESPHome Native API, with optional cloud services for OTA, telemetry, and zone editor sync.
+
+**Variants:** RS-1 Lite (LD2410) and RS-1 Pro (LD2410 + LD2450). **Add-ons:** PoE module and IAQ daughterboard.
 
 ## Start Here
 
 <CardGrid>
   <LinkCard
     title="Architecture"
-    description="System overview, data flow, and components."
+    description="Firmware pipeline, cloud stack, and module map."
     href="/products/rs-1/architecture/"
   />
   <LinkCard
     title="Hardware"
-    description="RV1106G3, SC3336 camera, LD2450 radar, NPU details."
+    description="Core components, variants, and add-ons."
     href="/products/rs-1/hardware/"
   />
   <LinkCard
-    title="RoomPlan API"
-    description="RoomPlan setup endpoints and payloads."
+    title="Provisioning & Setup"
+    description="QR setup flow, device AP mode, and provisioning API."
     href="/products/rs-1/roomplan/"
   />
   <LinkCard
     title="Quick Start (Dev)"
-    description="Developer build and deploy steps."
+    description="ESP-IDF build/flash basics and current status."
     href="/products/rs-1/quick-start/"
   />
 </CardGrid>
 
 ## Sources
 
-- `hardwareOS/README.md`
-- `hardwareOS/docs/rs1/RS1_ARCHITECTURE.md`
-- `hardwareOS/docs/rs1/DEVELOPMENT.md`
-- `hardwareOS/docs/rs1/ROOMPLAN_API.md`
+- `rs-1/README.md`
+- `rs-1/docs/PRD_RS1.md`
+- `rs-1/docs/REQUIREMENTS_RS1.md`
+- `rs-1/docs/firmware/README.md`
+- `rs-1/docs/cloud/README.md`

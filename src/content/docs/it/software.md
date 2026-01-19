@@ -14,7 +14,7 @@ From `agent-harness/docs/coder-workspace.md`, OpticWorks workspaces include:
 
 ## Repo-Specific Tooling
 
-- **hardwareOS**: Go + React; `go test ./...`, `npm run dev` in `ui/` (see `hardwareOS/README.md`).
+- **RS-1**: ESP-IDF + Python; `idf.py build`, `idf.py -p /dev/ttyUSB0 flash` (see `rs-1/README.md`).
 - **presence-detection-engine**: ESPHome + PlatformIO; `platformio test -e native`, `yamllint esphome/ homeassistant/` (see `presence-detection-engine/README.md`).
 - **opticworks-store**: pnpm, Next.js, Medusa; `pnpm run dev`, `pnpm run secrets:pull` (see `opticworks-store/README.md`).
 - **n8n-marketing-automation**: Docker Compose + Python shim; `docker compose up -d` on N100 (see `n8n-marketing-automation/README.md`).
@@ -22,7 +22,7 @@ From `agent-harness/docs/coder-workspace.md`, OpticWorks workspaces include:
 ## Sources
 
 - `agent-harness/docs/coder-workspace.md`
-- `hardwareOS/README.md`
+- `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `opticworks-store/README.md`
 - `n8n-marketing-automation/README.md`

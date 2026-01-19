@@ -1,3 +1,7 @@
+---
+title: MCP + Skills Layout
+---
+
 # MCP + Skills Layout
 
 This repo is the canonical place for agent harness extensions. Keep configs here

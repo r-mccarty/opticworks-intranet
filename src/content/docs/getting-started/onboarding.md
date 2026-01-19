@@ -34,7 +34,7 @@ Clone into `~/workspace/` for consistency. These are the main repos referenced i
 
 ```bash
 # Core repos
- gh repo clone r-mccarty/hardwareOS ~/workspace/hardwareOS
+ gh repo clone r-mccarty/rs-1 ~/workspace/rs-1
  gh repo clone r-mccarty/presence-dectection-engine ~/workspace/presence-detection-engine
  gh repo clone r-mccarty/opticworks-store ~/workspace/opticworks-store
  gh repo clone r-mccarty/opticworks-intranet ~/workspace/opticworks-intranet
@@ -52,21 +52,16 @@ This is required because the ESP32 hardware is physically attached to ubuntu-nod
 
 ## 4) Project-Specific Quick Starts
 
-### hardwareOS (RS-1)
+### RS-1
 
-From `hardwareOS/docs/rs1/DEVELOPMENT.md` and `hardwareOS/README.md`:
+From `rs-1/README.md`:
 
 ```bash
-# Device build + deploy
-./dev_deploy.sh -r <DEVICE_IP>
+# Firmware build (early, implementation in progress)
+idf.py build
 
-# Local tests
-make test
-# or
-go test ./...
-
-# UI dev
-cd ui && npm run dev
+# Flash to device (USB serial)
+idf.py -p /dev/ttyUSB0 flash
 ```
 
 ### presence-detection-engine
@@ -103,17 +98,16 @@ docker compose up -d
 
 ## 5) Operational Notes for New Agents
 
-- **Secrets**: Pulled from Infisical and stored in `~/.env.secrets`. Project-specific secrets live in repo docs (see `hardwareOS/docs/platform/SECRETS.md` and `opticworks-store/docs/SECRETS.md`).
+- **Secrets**: Pulled from Infisical and stored in `~/.env.secrets`. Project-specific secrets live in repo docs (see `rs-1/docs/cloud/INFRASTRUCTURE.md` and `opticworks-store/docs/SECRETS.md`).
 - **Device access**: Hardware flashing and Home Assistant access for the presence engine require ubuntu-node (documented in `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`).
-- **Deployments**: Each repo has its own deploy flow (see `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`, `hardwareOS/docs/rs1/DEVELOPMENT.md`).
+- **Deployments**: Each repo has its own deploy flow (see `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`, `rs-1/docs/firmware/HARDWAREOS_MODULE_OTA.md`, `rs-1/docs/cloud/INFRASTRUCTURE.md`).
 
 ## Sources
 
 - `agent-harness/AGENTS.md`
 - `agent-harness/docs/coder-workspace.md`
 - `agent-harness/docs/n100-coder-access.md`
-- `hardwareOS/README.md`
-- `hardwareOS/docs/rs1/DEVELOPMENT.md`
+- `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/README.md`
@@ -121,3 +115,5 @@ docker compose up -d
 - `opticworks-store/docs/SECRETS.md`
 - `n8n-marketing-automation/README.md`
 - `n8n-marketing-automation/SETUP.md`
+- `rs-1/docs/firmware/HARDWAREOS_MODULE_OTA.md`
+- `rs-1/docs/cloud/INFRASTRUCTURE.md`

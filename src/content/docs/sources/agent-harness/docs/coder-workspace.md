@@ -1,3 +1,7 @@
+---
+title: Workspace Capabilities
+---
+
 # Workspace Capabilities
 
 Reference for what's available in workspaces created from the `opticworks-dev`

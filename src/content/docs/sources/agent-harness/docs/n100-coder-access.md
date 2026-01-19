@@ -1,3 +1,7 @@
+---
+title: N100 + Coder Access
+---
+
 # N100 + Coder Access
 
 How to access the N100 host and manage Coder workspaces.

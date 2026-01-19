@@ -1,38 +1,56 @@
 ---
-title: RS-1 RoomPlan API
-description: RoomPlan endpoints and payloads for RS-1.
+title: RS-1 Provisioning & Setup
+description: QR setup flow, device AP mode, and provisioning API.
 ---
 
-RS-1 accepts room configuration data from iPhone RoomPlan exports to map sensor coordinates to room space.
+RS-1 provisioning is defined in `rs-1/docs/contracts/PROTOCOL_PROVISIONING.md`. The flow covers QR setup, device AP mode, local provisioning APIs, and cloud registration via MQTT.
 
-## API Endpoints (Verified)
+## Setup Flow (Verified)
 
-From `hardwareOS/docs/rs1/ROOMPLAN_API.md`:
+1. Scan QR code on the device.
+2. Connect to the device AP (`OpticWorks-XXXX`).
+3. Open the captive portal at `http://192.168.4.1`.
+4. Submit Wi-Fi credentials via the provisioning API.
+5. Device connects to Wi-Fi and registers via MQTT.
 
-- `POST /api/setup/roomplan` uploads room dimensions + sensor pose.
-- `GET /api/setup/roomplan` returns the current configuration.
+## QR Code Format (Verified)
 
-Example request:
+```
+opticworks://setup?d={mac_suffix}&ap={ap_ssid}
+```
 
-```http
-POST /api/setup/roomplan
-Content-Type: application/json
-Authorization: Bearer <token>
+- `d` is the MAC suffix (last 6 bytes, hex).
+- `ap` is the AP SSID (`OpticWorks-` + last 4 of MAC suffix).
 
+## Device AP Mode (Verified)
+
+- **SSID**: `OpticWorks-{XXXX}`
+- **Password**: none (open)
+- **IP**: `192.168.4.1`
+- **DHCP range**: `192.168.4.100` - `192.168.4.200`
+
+## Provisioning API (Verified)
+
+From `rs-1/docs/contracts/PROTOCOL_PROVISIONING.md`:
+
+- `GET /api/device-info` returns device identity and firmware metadata.
+- `POST /api/provision` accepts Wi-Fi credentials.
+
+Example payload:
+
+```json
 {
-  "room_width": 5.2,
-  "room_height": 4.8,
-  "sensor_pose": {
-    "m": [
-      0.866, 0.0, -0.5, 0.0,
-      0.0, 1.0, 0.0, 0.0,
-      0.5, 0.0, 0.866, 0.0,
-      2.6, 0.0, 2.4, 1.0
-    ]
-  }
+  "ssid": "HomeWifi",
+  "password": "secretpassword"
 }
 ```
 
+## MQTT Registration (Verified)
+
+- Device publishes to `opticworks/{device_id}/provision`.
+- Cloud responds on `opticworks/{device_id}/provision/response`.
+
 ## Sources
 
-- `hardwareOS/docs/rs1/ROOMPLAN_API.md`
+- `rs-1/docs/contracts/PROTOCOL_PROVISIONING.md`
+- `rs-1/docs/contracts/PROTOCOL_MQTT.md`

@@ -9,21 +9,16 @@ OpticWorks uses Coder workspaces bootstrapped by the agent-harness repo. See `ag
 
 ## Repo-Specific Setup
 
-### hardwareOS
+### RS-1
 
-From `hardwareOS/README.md` and `hardwareOS/docs/rs1/DEVELOPMENT.md`:
+From `rs-1/README.md`:
 
 ```bash
-# Build & deploy to device
-./dev_deploy.sh -r <DEVICE_IP>
+# Firmware build (early, implementation in progress)
+idf.py build
 
-# Run tests
-make test
-# or
-go test ./...
-
-# UI dev
-cd ui && npm run dev
+# Flash to device
+idf.py -p /dev/ttyUSB0 flash
 ```
 
 ### presence-detection-engine
@@ -61,8 +56,7 @@ docker compose up -d
 ## Sources
 
 - `agent-harness/docs/coder-workspace.md`
-- `hardwareOS/README.md`
-- `hardwareOS/docs/rs1/DEVELOPMENT.md`
+- `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/README.md`

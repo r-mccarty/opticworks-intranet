@@ -1,29 +1,37 @@
 ---
 title: RS-1 Quick Start (Developer)
-description: Developer quick start for RS-1 workflows.
+description: Developer quick start for RS-1 firmware work.
 ---
 
-This page documents developer-oriented setup steps for RS-1 based on the hardwareOS repo.
+RS-1 firmware is in specification phase. The commands below are the current placeholders from the repo README and will evolve as firmware implementation lands.
 
-## Build + Deploy
+## Prerequisites (Verified)
 
-From `hardwareOS/docs/rs1/DEVELOPMENT.md`:
+- ESP-IDF 5.x
+- Python 3.9+
+- USB-C cable (CH340N USB-UART bridge on-board)
 
-```bash
-./dev_deploy.sh -r <DEVICE_IP>
-./dev_deploy.sh -r <DEVICE_IP> --skip-ui-build
-./dev_deploy.sh -r <DEVICE_IP> --run-go-tests
-```
+## Build + Flash (Early)
 
-## Local Tests
+From `rs-1/README.md`:
 
 ```bash
-make test
-# or
-go test ./...
+# Build firmware
+idf.py build
+
+# Flash to device
+idf.py -p /dev/ttyUSB0 flash
 ```
+
+## Recommended Reading
+
+- `rs-1/docs/firmware/README.md` for HardwareOS architecture
+- `rs-1/docs/contracts/PROTOCOL_MQTT.md` for device-cloud topics
+- `rs-1/docs/testing/VALIDATION_PLAN_RS1.md` for validation metrics
 
 ## Sources
 
-- `hardwareOS/docs/rs1/DEVELOPMENT.md`
-- `hardwareOS/README.md`
+- `rs-1/README.md`
+- `rs-1/docs/firmware/README.md`
+- `rs-1/docs/contracts/PROTOCOL_MQTT.md`
+- `rs-1/docs/testing/VALIDATION_PLAN_RS1.md`

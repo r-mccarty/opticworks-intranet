@@ -13,21 +13,25 @@ From `presence-detection-engine/CONTRIBUTING.md`:
 - **Python**: format with Black, follow PEP 8, add docstrings and type hints.
 - **YAML**: 2-space indentation, validate with `yamllint`.
 
-### hardwareOS
+### RS-1
 
-From `hardwareOS/docs/platform/DEVELOPMENT.md`:
+From `rs-1/CLAUDE.md`:
 
-- **Go**: follow standard Go conventions.
-- **TypeScript**: use TypeScript for type safety.
-- **React**: keep components small and reusable.
-- **Localization**: ensure user-facing strings are localized where required by the platform docs.
+- **Documentation first**: update module specs and contracts before implementation.
+- **Firmware style**: follow ESP-IDF coding conventions.
+- **Logging**: use ESP-IDF logging macros and HardwareOS logging interfaces.
+- **Module prefixes**: use module-specific prefixes (e.g., `radar_`, `track_`, `zone_`).
 
 ## Logging Guidance (Verified)
 
-`hardwareOS/docs/platform/LOGGING_AND_METRICS.md` explicitly warns against committing raw `print` or `log` statements and directs developers to use the logging package instead.
+From `rs-1/docs/firmware/HARDWAREOS_MODULE_LOGGING.md`:
+
+- Log levels are standardized (Error, Warning, Info, Debug, Verbose).
+- Telemetry is opt-in and uses MQTT with the schema in `docs/contracts/SCHEMA_TELEMETRY.json`.
 
 ## Sources
 
 - `presence-detection-engine/CONTRIBUTING.md`
-- `hardwareOS/docs/platform/DEVELOPMENT.md`
-- `hardwareOS/docs/platform/LOGGING_AND_METRICS.md`
+- `rs-1/CLAUDE.md`
+- `rs-1/docs/firmware/HARDWAREOS_MODULE_LOGGING.md`
+- `rs-1/docs/contracts/SCHEMA_TELEMETRY.json`

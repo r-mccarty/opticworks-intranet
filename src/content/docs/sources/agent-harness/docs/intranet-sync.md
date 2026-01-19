@@ -1,3 +1,7 @@
+---
+title: Intranet Sync (agent-harness -> opticworks-intranet)
+---
+
 # Intranet Sync (agent-harness -> opticworks-intranet)
 
 The OpticWorks intranet mirrors documentation from this repo to keep the internal wiki accurate.

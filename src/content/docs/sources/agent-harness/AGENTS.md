@@ -1,3 +1,7 @@
+---
+title: Agent Harness
+---
+
 # Agent Harness
 
 This repo bootstraps Coder workspaces with the context agents need to be productive

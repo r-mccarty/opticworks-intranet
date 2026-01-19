@@ -1,20 +1,27 @@
 ---
 title: RS-1 Specifications
-description: Verified RS-1 specifications from hardwareOS docs.
+description: Verified RS-1 specifications from rs-1 docs.
 ---
 
 ## Core Specs (Verified)
 
-From `hardwareOS/README.md` and `hardwareOS/docs/rs1/RS1_ARCHITECTURE.md`:
+From `rs-1/README.md` and `rs-1/docs/hardware/HARDWARE_SPEC.md`:
 
 | Component | Specification |
 |----------|----------------|
-| SoC | Rockchip RV1106G3 (ARM Cortex-A7 @ 1.2GHz, 256MB DDR3) |
-| NPU | RKNN 1.0 TOPS |
-| Camera | SC3336 MIPI CSI-2 (3MP) |
-| Radar | HLK-LD2450 24GHz (UART 256000 baud) |
+| MCU | ESP32-WROOM-32E (8MB flash) + CH340N USB-UART |
+| Radar | LD2410 (Lite) or LD2410 + LD2450 (Pro) |
+| Detection range | Up to 6 meters |
+| Field of view | LD2410: 120 deg x 120 deg; LD2450: 120 deg x 60 deg |
+| Targets tracked | Lite: binary presence; Pro: up to 3 targets |
+| Update rate | ~5 Hz (LD2410); 33 Hz (LD2450) |
+| Connectivity | Wi-Fi 802.11 b/g/n; optional Ethernet (RMII) |
+| Power | USB-C 5V; optional 802.3af PoE |
+| Operating temperature | 0C to 50C |
+| Storage temperature | -20C to 70C |
+| Response time | < 1 second |
 
 ## Sources
 
-- `hardwareOS/README.md`
-- `hardwareOS/docs/rs1/RS1_ARCHITECTURE.md`
+- `rs-1/README.md`
+- `rs-1/docs/hardware/HARDWARE_SPEC.md`

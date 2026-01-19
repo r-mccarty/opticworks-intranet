@@ -17,7 +17,7 @@ const TEST_PAGES = [
   { name: 'content', path: '/getting-started/onboarding/', description: 'Rich content page' },
   { name: 'dev-setup', path: '/development/setup/', description: 'Code blocks, tables' },
   { name: 'infrastructure', path: '/it/infrastructure/', description: 'Complex tables, diagrams' },
-  { name: 'project', path: '/projects/hardware-os/', description: 'Project overview' },
+  { name: 'project', path: '/projects/rs-1/', description: 'Project overview' },
   { name: 'handbook', path: '/handbook/culture/', description: 'Text-heavy page' },
 ];
 

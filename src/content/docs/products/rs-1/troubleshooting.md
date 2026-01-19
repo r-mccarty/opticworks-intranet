@@ -1,18 +1,33 @@
 ---
 title: RS-1 Troubleshooting
-description: Logging and diagnostics references for RS-1.
+description: Logging, diagnostics, and degraded mode behavior for RS-1.
 ---
 
 ## Logging and Diagnostics (Verified)
 
-`hardwareOS/docs/platform/LOGGING_AND_METRICS.md` documents the logging system (zerolog, subsystem loggers) and the live log stream endpoint:
+From `rs-1/docs/firmware/HARDWAREOS_MODULE_LOGGING.md`:
 
-```bash
-curl http://<device-ip>/log-stream
-```
+- Log levels: Error, Warning, Info, Debug, Verbose.
+- Serial logging is always enabled; flash logging is optional.
+- Diagnostics include free heap, uptime, Wi-Fi RSSI, radar frame counts, and watchdog resets.
 
-It also describes how `dev_deploy.sh` configures trace scopes and how to set custom trace subsystems.
+## Degraded Modes (Verified)
+
+From `rs-1/docs/firmware/DEGRADED_MODES.md`:
+
+| Failure | Core Detection | Home Assistant | Cloud Features |
+|---------|----------------|----------------|----------------|
+| Wi-Fi down | Yes | No | No |
+| MQTT down | Yes | Yes (local) | No |
+| HA disconnected | Yes | No | Yes |
+| Radar disconnected | No | Stale | Yes |
+
+## Recovery Notes (Verified)
+
+- Wi-Fi and MQTT reconnect automatically with backoff.
+- Telemetry queues locally during outages and flushes on reconnect.
 
 ## Sources
 
-- `hardwareOS/docs/platform/LOGGING_AND_METRICS.md`
+- `rs-1/docs/firmware/HARDWAREOS_MODULE_LOGGING.md`
+- `rs-1/docs/firmware/DEGRADED_MODES.md`

@@ -18,6 +18,10 @@ From `agent-harness/AGENTS.md` and `docs/coder-workspace.md`:
 
 The presence-detection-engine repo requires conventional commit messages and short subjects.
 
+### Documentation First (RS-1)
+
+RS-1 work starts in specs: update module docs and contracts before implementation changes.
+
 ### Do Not Commit Secrets
 
 - `opticworks-store/docs/SECRETS.md` forbids committing `.env.local`, `.dev.vars`, or `backend/.env`.
@@ -35,6 +39,7 @@ The presence engine uses Codespaces/local for editing and ubuntu-node for flashi
 - `presence-detection-engine/CONTRIBUTING.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/docs/SECRETS.md`
+- `rs-1/CLAUDE.md`
 
 ## Diagrams
 
@@ -42,7 +47,7 @@ The presence engine uses Codespaces/local for editing and ubuntu-node for flashi
 
 ```
 agent-harness -> workspace bootstrap
-hardwareOS    -> RS-1 device stack
+rs-1 -> RS-1 device platform
 presence-engine -> ESP32 + HA
 opticworks-store -> storefront + Medusa
 n8n-marketing-automation -> N100 automation

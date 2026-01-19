@@ -15,17 +15,15 @@ cat ~/.env.secrets
 echo $GITHUB_TOKEN
 ```
 
-## hardwareOS Secrets
+## RS-1 Cloud Secrets
 
-HardwareOS secrets are stored in Infisical and accessed via the CLI. Examples from `hardwareOS/docs/platform/SECRETS.md`:
+RS-1 cloud services use Cloudflare Worker secrets documented in `rs-1/docs/cloud/INFRASTRUCTURE.md`.
 
 ```bash
-infisical secrets get DATABASE_URL --env=prod \
-  --projectId=42e9e77c-88fa-4cbb-925b-5064c8e3b18c \
-  --token="$INFISICAL_SERVICE_TOKEN" --plain
+wrangler secret put EMQX_API_KEY --env production
+wrangler secret put SIGNING_KEY --env production
+wrangler secret put WEBHOOK_SECRET --env production
 ```
-
-That same doc also lists the expected vault structure and device-side secret locations.
 
 ## opticworks-store Secrets
 
@@ -45,7 +43,7 @@ The N8N deployment uses environment variables in `.env` on the N100 host. The re
 
 - `agent-harness/AGENTS.md`
 - `agent-harness/docs/coder-workspace.md`
-- `hardwareOS/docs/platform/SECRETS.md`
+- `rs-1/docs/cloud/INFRASTRUCTURE.md`
 - `opticworks-store/docs/SECRETS.md`
 - `n8n-marketing-automation/README.md`
 - `n8n-marketing-automation/docs/x-api-setup.md`

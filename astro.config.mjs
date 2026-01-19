@@ -60,12 +60,12 @@ export default defineConfig({
 						{ label: 'Overview', slug: 'projects' },
 						{ label: 'Agent Harness', slug: 'projects/agent-harness' },
 						{
-							label: 'hardwareOS',
+							label: 'RS-1 Platform',
 							items: [
-								{ label: 'Overview', slug: 'projects/hardware-os' },
-								{ label: 'Architecture', slug: 'projects/hardware-os/architecture' },
-								{ label: 'Development Guide', slug: 'projects/hardware-os/development' },
-								{ label: 'Deployment', slug: 'projects/hardware-os/deployment' },
+								{ label: 'Overview', slug: 'projects/rs-1' },
+								{ label: 'Architecture', slug: 'projects/rs-1/architecture' },
+								{ label: 'Development Guide', slug: 'projects/rs-1/development' },
+								{ label: 'Deployment', slug: 'projects/rs-1/deployment' },
 							],
 						},
 						{
@@ -101,8 +101,8 @@ export default defineConfig({
 								{ label: 'Quick Start', slug: 'products/rs-1/quick-start' },
 								{ label: 'Architecture', slug: 'products/rs-1/architecture' },
 								{ label: 'Hardware Overview', slug: 'products/rs-1/hardware' },
-								{ label: 'iOS App & RoomPlan', slug: 'products/rs-1/roomplan' },
-								{ label: 'Calibration & Tuning', slug: 'products/rs-1/calibration' },
+								{ label: 'Provisioning & Setup', slug: 'products/rs-1/roomplan' },
+								{ label: 'Zones & Tuning', slug: 'products/rs-1/calibration' },
 								{ label: 'Daily Usage', slug: 'products/rs-1/usage' },
 								{ label: 'Integrations', slug: 'products/rs-1/integrations' },
 								{ label: 'Troubleshooting', slug: 'products/rs-1/troubleshooting' },

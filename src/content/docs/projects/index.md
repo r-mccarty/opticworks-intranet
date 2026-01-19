@@ -8,7 +8,7 @@ description: Canonical overview of OpticWorks repos and their purpose.
 | Repo | Purpose | Primary Stack | Notes |
 |------|---------|----------------|-------|
 | `agent-harness` | Coder workspace bootstrap | Terraform + Docker | Workspace provisioning |
-| `hardwareOS` | Embedded platform for RS-1 | Go, C, React | RS-1 device stack |
+| `rs-1` | RS-1 presence sensor platform | ESP-IDF (C/C++), Cloudflare Workers | Firmware + cloud specs |
 | `presence-detection-engine` | ESP32 presence engine + HA tooling | C++, Python, YAML | Two-machine workflow |
 | `opticworks-store` | Storefront + Medusa backend | Next.js, Medusa | E-commerce |
 | `opticworks-intranet` | Internal docs site | Astro/Starlight | This site |
@@ -17,7 +17,8 @@ description: Canonical overview of OpticWorks repos and their purpose.
 ## Where to Start
 
 - `agent-harness/AGENTS.md` for workspace access and tooling
-- `hardwareOS/docs/README.md` for RS-1 + platform docs
+- `rs-1/README.md` for RS-1 overview and docs map
+- `rs-1/docs/firmware/README.md` for HardwareOS architecture
 - `presence-detection-engine/docs/quickstart.md` for ESP32 + HA setup
 - `opticworks-store/docs/reference/README.md` for store architecture
 - `n8n-marketing-automation/SETUP.md` for N8N deployment
@@ -25,8 +26,8 @@ description: Canonical overview of OpticWorks repos and their purpose.
 ## Sources
 
 - `agent-harness/AGENTS.md`
-- `hardwareOS/README.md`
-- `hardwareOS/docs/README.md`
+- `rs-1/README.md`
+- `rs-1/docs/firmware/README.md`
 - `presence-detection-engine/README.md`
 - `presence-detection-engine/docs/quickstart.md`
 - `opticworks-store/README.md`
@@ -43,8 +44,8 @@ description: Canonical overview of OpticWorks repos and their purpose.
                                 |
         +-----------------------+-----------------------+
         |                       |                       |
-   agent-harness           hardwareOS           presence-detection-engine
- (workspace boot)        (RS-1 platform)        (ESP32 + HA)
+   agent-harness                rs-1              presence-detection-engine
+ (workspace boot)       (RS-1 platform)            (ESP32 + HA)
         |                       |                       |
         +-----------+-----------+-----------+-----------+
                     |                       |
