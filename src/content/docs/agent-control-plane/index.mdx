@@ -1,0 +1,128 @@
+---
+title: Agent Control Plane
+description: Sprites-first agent execution platform - provisioning, orchestration, and automated code review.
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+The **Agent Control Plane** is OpticWorks' primary development environment. **Sprites** are hardware-isolated cloud VMs purpose-built for AI agent execution, replacing traditional developer workstations with persistent, checkpointable, and instantly-provisionable environments.
+
+## What is a Sprite?
+
+A Sprite is a hardware-isolated execution environment for AI agents:
+
+- **Hardware isolation** — True VM-level separation, not containers
+- **Persistent** — State survives across sessions, can be checkpointed and restored
+- **Fast startup** — ~1s cold start, instant when warm
+- **Pre-configured** — Secrets, GitHub access, and AI tooling ready to go
+
+## Sprite Status
+
+<table class="status-table">
+  <thead>
+    <tr>
+      <th>Sprite</th>
+      <th>Purpose</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>hammer</code></td>
+      <td>Git push reviewer (Claude)</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><code>anvil</code></td>
+      <td>Git push reviewer (Codex)</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><code>mallet</code></td>
+      <td>General workspace</td>
+      <td><span class="badge badge-active">Active</span></td>
+    </tr>
+    <tr>
+      <td><code>test-sprite</code></td>
+      <td>Bootstrapper</td>
+      <td><span class="badge badge-info">Reserved</span></td>
+    </tr>
+  </tbody>
+</table>
+
+:::caution[Reserved Sprites]
+**Do not use `hammer` or `anvil` for general tasks** — they're dedicated to automated code review workflows triggered by git push.
+:::
+
+## Quick Links
+
+<CardGrid>
+  <LinkCard
+    title="Sprite Operations"
+    description="Provisioning, checkpointing, and execution."
+    href="/agent-control-plane/operations/"
+  />
+  <LinkCard
+    title="Automated Code Review"
+    description="hammer/anvil review workflows."
+    href="/agent-control-plane/code-review/"
+  />
+  <LinkCard
+    title="Coder Workspaces"
+    description="Alternative: Traditional Coder setup."
+    href="/agent-control-plane/coder/"
+  />
+</CardGrid>
+
+## Environment
+
+Every sprite comes pre-configured with:
+
+| Resource | Location | Description |
+|----------|----------|-------------|
+| **Secrets** | `~/.env.secrets` | 47+ variables, auto-sourced in bash |
+| **AI CLIs** | `claude`, `codex` | Pre-authenticated, ready to use |
+| **GitHub** | `gh` CLI | Authenticated, git push works |
+| **Repos** | `~/workspace/<repo>` | Cloned during provisioning |
+| **Hardware** | `ssh n100` | Via Cloudflare tunnel |
+
+### Key Environment Variables
+
+```bash
+$GITHUB_TOKEN        # GitHub API access
+$ANTHROPIC_API_KEY   # Claude API
+$OPENAI_API_KEY      # OpenAI/Codex API
+```
+
+## Quick Start
+
+Run `sprite-info` inside any sprite to see your environment:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sprite Environment
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Sprite:      mallet
+  GitHub:      r-mccarty
+  Secrets:     47 loaded (~/.env.secrets)
+  Claude:      available
+  Repos:       rs-1, hardwareOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+## Monitored Repositories
+
+The following repos are cloned to sprites and monitored for automated review:
+
+| Repository | Stack | Description |
+|------------|-------|-------------|
+| **rs-1** | ESP32 + LD2450 | Presence sensor hardware |
+| **hardwareOS** | Go + React | Embedded platform |
+| **opticworks-store** | Next.js + Medusa | E-commerce |
+| **esphome-presence-engine** | ESPHome | Presence detection |
+| **rv1106-system** | Linux | RV1106 system images |
+| **n8n-marketing-automation** | N8N | Marketing workflows |
+
+---
+
+**Source:** `agent-harness/CLAUDE.md`, `agent-harness/sprites-manifest.json`

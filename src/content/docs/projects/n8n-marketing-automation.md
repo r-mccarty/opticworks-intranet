@@ -3,6 +3,10 @@ title: N8N Marketing Automation
 description: N100-hosted N8N deployment and Tweet API shim.
 ---
 
+<div class="notice-dormant">
+<strong>Dormant Project:</strong> N8N marketing automation is not actively maintained. The infrastructure remains available but is not a current priority. Contact the team before making changes.
+</div>
+
 The `n8n-marketing-automation` repo contains the Docker Compose deployment for OpticWorks marketing automation on the N100 host.
 
 ## Deployment (Verified)

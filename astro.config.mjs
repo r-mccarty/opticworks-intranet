@@ -39,6 +39,15 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Agent Control Plane',
+					items: [
+						{ label: 'Overview', slug: 'agent-control-plane' },
+						{ label: 'Sprite Operations', slug: 'agent-control-plane/operations' },
+						{ label: 'Automated Code Review', slug: 'agent-control-plane/code-review' },
+						{ label: 'Coder Workspaces (Alternative)', slug: 'agent-control-plane/coder' },
+					],
+				},
+				{
 					label: 'Workspace & Access',
 					items: [
 						{ label: 'Infrastructure', slug: 'it/infrastructure' },
@@ -56,10 +65,17 @@ export default defineConfig({
 					],
 				},
 				{
+					label: 'Hardware Platform',
+					items: [
+						{ label: 'Overview', slug: 'hardware-platform' },
+						{ label: 'hardwareOS (Firmware)', slug: 'hardware-platform/hardwareos' },
+						{ label: 'rv1106-system (Infrastructure)', slug: 'hardware-platform/rv1106' },
+					],
+				},
+				{
 					label: 'Projects',
 					items: [
 						{ label: 'Overview', slug: 'projects' },
-						{ label: 'Agent Control Plane', slug: 'projects/agent-harness' },
 						{
 							label: 'RS-1 Platform',
 							items: [
@@ -87,7 +103,7 @@ export default defineConfig({
 								{ label: 'Deployment & Operations', slug: 'projects/store/operations' },
 							],
 						},
-						{ label: 'N8N Marketing Automation', slug: 'projects/n8n-marketing-automation' },
+						{ label: 'N8N Marketing (Dormant)', slug: 'projects/n8n-marketing-automation' },
 						{ label: 'Lessons Learned', slug: 'projects/lessons-learned' },
 						{ label: 'Shared Resources', slug: 'projects/shared-resources' },
 					],

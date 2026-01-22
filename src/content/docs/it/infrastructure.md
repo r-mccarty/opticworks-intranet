@@ -3,43 +3,46 @@ title: Infrastructure Overview
 description: Verified infrastructure notes sourced from OpticWorks repos and workspace docs.
 ---
 
-## Core Infrastructure (Coder + N100)
+## Core Infrastructure (Sprites + N100)
 
-OpticWorks development workspaces run on an N100 host with Coder, privileged device access, and host networking. Key facts:
+OpticWorks development runs on **Sprites** — hardware-isolated cloud VMs purpose-built for AI agent execution. The N100 host provides supplementary services.
+
+### Primary: Sprites
+
+Sprites are the standard development environment. See [Agent Control Plane](/agent-control-plane/) for full documentation.
+
+- **Fast startup** — ~1s cold start
+- **Pre-configured** — Secrets, GitHub, AI tooling ready
+- **Checkpointable** — Save and restore state
+
+### Alternative: Coder Workspaces
+
+Coder workspaces are available as an alternative for specific use cases. See [Coder Workspaces](/agent-control-plane/coder/).
 
 - **Coder UI**: `https://coder.hardwareos.com`
+
+### N100 Host Access
+
 - **N100 SSH**: `ssh n100`
 - **Home Assistant**: `https://ha.hardwareos.com`
 - **N100 LAN IP**: `192.168.0.148`
 
-These details are maintained in `agent-harness/docs/n100-coder-access.md`.
-
 ## Services on the N100 Host
-
-From `agent-harness/AGENTS.md`:
 
 | Service | Purpose | Notes |
 |---------|---------|-------|
-| Coder | Workspace orchestration | Runs on N100 | 
+| Coder | Workspace orchestration (Alternative) | Runs on N100 |
 | Home Assistant | Smart home automation | Tunnelled via ha.hardwareos.com |
-| N8N | Marketing automation | https://n8n.optic.works |
-| Tweet API shim | X OAuth shim for N8N | localhost-only on N100 |
-| Cloudflared | Tunnel management | N100 host | 
+| Cloudflared | Tunnel management | N100 host |
 | Docker | Container runtime | N100 host |
 
-## N8N Deployment (Marketing Automation)
+## N8N Deployment (Dormant)
 
-N8N is deployed on N100 using Docker Compose. See `n8n-marketing-automation/SETUP.md` for full details. Key operations:
+<div class="notice-dormant">
+<strong>Dormant:</strong> N8N marketing automation is not actively maintained.
+</div>
 
-```bash
-ssh n100
-cd /opt/n8n
-docker compose up -d
-
-docker compose logs -f
-```
-
-The Tweet API shim service runs as a systemd unit and listens on `127.0.0.1:5680` (documented in `n8n-marketing-automation/README.md`).
+N8N was deployed on N100 using Docker Compose. See [N8N Marketing Automation](/projects/n8n-marketing-automation/) for archived documentation.
 
 ## Cloudflare Infrastructure (Store + Intranet)
 
@@ -47,9 +50,6 @@ The OpticWorks store uses Cloudflare Workers and a Medusa backend on Hetzner. Th
 
 ## Sources
 
-- `agent-harness/AGENTS.md`
+- `agent-harness/CLAUDE.md`
 - `agent-harness/docs/n100-coder-access.md`
-- `n8n-marketing-automation/README.md`
-- `n8n-marketing-automation/SETUP.md`
-- `opticworks-store/README.md`
 - `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`

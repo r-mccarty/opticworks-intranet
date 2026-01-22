@@ -5,35 +5,34 @@ description: Canonical overview of OpticWorks repos and their purpose.
 
 ## Core Repositories
 
-| Repo | Purpose | Primary Stack | Notes |
-|------|---------|----------------|-------|
-| `agent-harness` | Coder workspace bootstrap | Terraform + Docker | Workspace provisioning |
-| `rs-1` | RS-1 presence sensor platform | ESP-IDF (C/C++), Cloudflare Workers | Firmware + cloud specs |
-| `presence-detection-engine` | ESP32 presence engine + HA tooling | C++, Python, YAML | Two-machine workflow |
-| `opticworks-store` | Storefront + Medusa backend | Next.js, Medusa | E-commerce |
-| `opticworks-intranet` | Internal docs site | Astro/Starlight | This site |
-| `n8n-marketing-automation` | Marketing automation | Docker + Python | N100 deployment |
+| Repo | Purpose | Primary Stack | Status |
+|------|---------|----------------|--------|
+| `agent-harness` | Sprite provisioning & orchestration | Python + Infisical | <span class="badge badge-active">Active</span> |
+| `rs-1` | RS-1 presence sensor platform | ESP-IDF (C/C++), Cloudflare Workers | <span class="badge badge-active">Active</span> |
+| `hardwareOS` | Embedded firmware platform | Go + React | <span class="badge badge-spec-phase">Spec Phase</span> |
+| `rv1106-system` | RV1106 Linux system images | Buildroot | <span class="badge badge-spec-phase">Spec Phase</span> |
+| `presence-detection-engine` | ESP32 presence engine + HA tooling | C++, Python, YAML | <span class="badge badge-active">Active</span> |
+| `opticworks-store` | Storefront + Medusa backend | Next.js, Medusa | <span class="badge badge-active">Active</span> |
+| `opticworks-intranet` | Internal docs site | Astro/Starlight | <span class="badge badge-active">Active</span> |
+| `n8n-marketing-automation` | Marketing automation | Docker + Python | <span class="badge badge-dormant">Dormant</span> |
 
 ## Where to Start
 
-- `agent-harness/AGENTS.md` for workspace access and tooling
+- [Agent Control Plane](/agent-control-plane/) for Sprites and AI orchestration
+- [Hardware Platform](/hardware-platform/) for hardwareOS and rv1106-system
 - `rs-1/README.md` for RS-1 overview and docs map
-- `rs-1/docs/firmware/README.md` for HardwareOS architecture
 - `presence-detection-engine/docs/quickstart.md` for ESP32 + HA setup
 - `opticworks-store/docs/reference/README.md` for store architecture
-- `n8n-marketing-automation/SETUP.md` for N8N deployment
 
 ## Sources
 
-- `agent-harness/AGENTS.md`
+- `agent-harness/CLAUDE.md`
 - `rs-1/README.md`
-- `rs-1/docs/firmware/README.md`
+- `hardwareOS/README.md`
+- `rv1106-system/README.md`
 - `presence-detection-engine/README.md`
-- `presence-detection-engine/docs/quickstart.md`
 - `opticworks-store/README.md`
-- `opticworks-store/docs/reference/README.md`
 - `n8n-marketing-automation/README.md`
-- `n8n-marketing-automation/SETUP.md`
 
 ## Meta Diagrams
 
@@ -42,35 +41,36 @@ description: Canonical overview of OpticWorks repos and their purpose.
 ```
                            OpticWorks
                                 |
-        +-----------------------+-----------------------+
-        |                       |                       |
-   agent-harness                rs-1              presence-detection-engine
- (workspace boot)       (RS-1 platform)            (ESP32 + HA)
-        |                       |                       |
-        +-----------+-----------+-----------+-----------+
-                    |                       |
-            opticworks-store         n8n-marketing-automation
-        (e-commerce + Medusa)        (N100 automation)
-                    |
-             opticworks-intranet
-              (this docs site)
+    +---------------------------+---------------------------+
+    |                           |                           |
+agent-harness               Hardware                    Applications
+ (Sprites)                      |                           |
+    |               +-----------+-----------+       +-------+-------+
+    |               |           |           |       |               |
+    |         hardwareOS    rv1106      rs-1    opticworks    presence-
+    |          (Go+React)   (Linux)  (sensor)    store        engine
+    |                                               |
+    +-----------------------------------------------+
+                            |
+                     opticworks-intranet
+                      (this docs site)
 ```
 
 ### Runtime Surfaces
 
 ```
-Developer --> Coder Workspace --> N100 Host --> Hardware / Services
-   |                |                |
-   |                |                +--> N8N (docker compose)
-   |                +--> Infisical secrets
-   |                +--> GitHub access
-   +--> Repo edits  +--> ssh n100
+Developer --> Sprite VM --> N100 Host --> Hardware / Services
+   |              |              |
+   |              |              +--> Docker services
+   |              +--> Infisical secrets
+   |              +--> GitHub access
+   +--> Repo edits+--> ssh n100
 ```
 
 ### Secrets Flow
 
 ```
-Infisical --> ~/.env.secrets --> Coder workspace shell
+Infisical --> ~/.env.secrets --> Sprite shell
      |            |                 |
      |            +--> gh auth       +--> repo-specific tools
      +--> service tokens             +--> deploy scripts

@@ -5,7 +5,7 @@ description: Verified hardware access notes from OpticWorks repos.
 
 ## Workspace Hardware Access
 
-Coder workspaces run on the N100 host with USB passthrough enabled. Available tools include `adb`, `lsusb`, and serial utilities (`picocom`, `minicom`).
+Sprites provide access to N100 hardware via SSH tunnel. Available tools include `adb`, `lsusb`, and serial utilities (`picocom`, `minicom`).
 
 ```bash
 lsusb
@@ -36,6 +36,5 @@ The presence-detection-engine repo documents the current wiring and calibration 
 
 ## Sources
 
-- `agent-harness/AGENTS.md`
-- `agent-harness/docs/coder-workspace.md`
+- `agent-harness/CLAUDE.md`
 - `presence-detection-engine/docs/HARDWARE_SETUP.md`

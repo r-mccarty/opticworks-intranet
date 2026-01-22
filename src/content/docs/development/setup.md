@@ -5,7 +5,25 @@ description: Verified setup steps from OpticWorks repos.
 
 ## Workspace Baseline
 
-OpticWorks uses Coder workspaces bootstrapped by the agent-harness repo. See `agent-harness/docs/coder-workspace.md` for the installed toolchain and startup behaviors (Infisical secrets, GH auth, SSH keys).
+OpticWorks development runs on **Sprites** — hardware-isolated cloud VMs purpose-built for AI agent execution.
+
+### Quick Start with Sprites
+
+```bash
+# Check your sprite environment
+sprite-info
+
+# Verify tooling
+gh auth status
+claude --version
+cat ~/.env.secrets | wc -l
+```
+
+See [Agent Control Plane](/agent-control-plane/) for full Sprite documentation.
+
+### Alternative: Coder Workspaces
+
+Coder workspaces are available as an alternative. See [Coder Workspaces](/agent-control-plane/coder/) for setup.
 
 ## Repo-Specific Setup
 
@@ -55,10 +73,8 @@ docker compose up -d
 
 ## Sources
 
-- `agent-harness/docs/coder-workspace.md`
+- `agent-harness/CLAUDE.md`
 - `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/README.md`
-- `n8n-marketing-automation/README.md`
-- `n8n-marketing-automation/SETUP.md`

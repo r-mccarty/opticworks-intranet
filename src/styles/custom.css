@@ -167,6 +167,70 @@
   color: var(--sl-color-accent);
 }
 
+/* Project status badges */
+.badge-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.badge-dormant {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.badge-spec-phase {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+:root[data-theme='dark'] .badge-active {
+  background: #14532d;
+  color: #86efac;
+}
+
+:root[data-theme='dark'] .badge-dormant {
+  background: #374151;
+  color: #9ca3af;
+}
+
+:root[data-theme='dark'] .badge-spec-phase {
+  background: #78350f;
+  color: #fcd34d;
+}
+
+/* Notice boxes */
+.notice-dormant {
+  padding: 1rem 1.25rem;
+  background: #f3f4f6;
+  border-left: 3px solid #9ca3af;
+  border-radius: 0 0.375rem 0.375rem 0;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.notice-spec-phase {
+  padding: 1rem 1.25rem;
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 0.375rem 0.375rem 0;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: #92400e;
+}
+
+:root[data-theme='dark'] .notice-dormant {
+  background: #374151;
+  border-left-color: #6b7280;
+  color: #d1d5db;
+}
+
+:root[data-theme='dark'] .notice-spec-phase {
+  background: #78350f;
+  border-left-color: #fbbf24;
+  color: #fcd34d;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .stats-row {

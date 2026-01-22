@@ -3,9 +3,9 @@ title: Software & Tools
 description: Tools available in OpticWorks workspaces and repo-specific tooling.
 ---
 
-## Workspace Tooling (Coder)
+## Workspace Tooling (Sprites)
 
-From `agent-harness/docs/coder-workspace.md`, OpticWorks workspaces include:
+OpticWorks Sprites include:
 
 - **Languages**: Go 1.23.4, Node.js 22.x, Python 3.x, Rust (latest)
 - **AI CLIs**: `claude`, `codex`, `gemini`, `opencode`
@@ -21,8 +21,7 @@ From `agent-harness/docs/coder-workspace.md`, OpticWorks workspaces include:
 
 ## Sources
 
-- `agent-harness/docs/coder-workspace.md`
+- `agent-harness/CLAUDE.md`
 - `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `opticworks-store/README.md`
-- `n8n-marketing-automation/README.md`

@@ -1,24 +1,38 @@
 ---
 title: New Employee & Agent Onboarding
-description: Verified onboarding steps sourced from OpticWorks repos and workspace docs.
+description: Sprites-first onboarding for OpticWorks team members and AI agents.
 ---
 
 ## What This Page Covers
 
-This onboarding guide is compiled from the **actual repo docs** used in OpticWorks workspaces and projects. It focuses on getting access, validating tooling, and following the real development workflows used in production.
+This onboarding guide gets you running on **Sprites** — OpticWorks' hardware-isolated cloud VMs purpose-built for AI agent execution. Sprites are the primary development environment.
 
-## 1) Verify Workspace Access (Coder + Agent Harness)
+## 1) Verify Sprite Environment
 
-OpticWorks workspaces are bootstrapped by the **agent-harness** repo. Confirm the following in your workspace:
+Run `sprite-info` to see your environment:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sprite Environment
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Sprite:      mallet
+  GitHub:      r-mccarty
+  Secrets:     47 loaded (~/.env.secrets)
+  Claude:      available
+  Repos:       rs-1, hardwareOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Verify tooling manually:
 
 ```bash
 # GitHub auth
- gh auth status
+gh auth status
 
 # Secrets injected from Infisical
 cat ~/.env.secrets | wc -l
 
-# Coder tools
+# AI tools
 claude --version
 codex --version
 
@@ -26,7 +40,7 @@ codex --version
 ssh n100 "hostname"
 ```
 
-If any of these fail, refer to the workspace troubleshooting steps in `agent-harness/docs/coder-workspace.md` and `agent-harness/docs/n100-coder-access.md`.
+If any of these fail, your sprite may need reprovisioning. See [Sprite Operations](/agent-control-plane/operations/).
 
 ## 2) Clone Primary Repos
 
@@ -98,22 +112,17 @@ docker compose up -d
 
 ## 5) Operational Notes for New Agents
 
-- **Secrets**: Pulled from Infisical and stored in `~/.env.secrets`. Project-specific secrets live in repo docs (see `rs-1/docs/cloud/INFRASTRUCTURE.md` and `opticworks-store/docs/SECRETS.md`).
-- **Device access**: Hardware flashing and Home Assistant access for the presence engine require ubuntu-node (documented in `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`).
-- **Deployments**: Each repo has its own deploy flow (see `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`, `rs-1/docs/firmware/HARDWAREOS_MODULE_OTA.md`, `rs-1/docs/cloud/INFRASTRUCTURE.md`).
+- **Sprites are primary**: Use Sprites for all development work. See [Agent Control Plane](/agent-control-plane/).
+- **Secrets**: Pulled from Infisical and stored in `~/.env.secrets`. Auto-sourced in bash.
+- **Checkpointing**: Save state before risky operations. See [Sprite Operations](/agent-control-plane/operations/).
+- **Device access**: Hardware flashing requires ubuntu-node (documented in `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`).
+- **Automated reviews**: Push to monitored repos triggers AI code review via hammer/anvil. See [Automated Code Review](/agent-control-plane/code-review/).
 
 ## Sources
 
-- `agent-harness/AGENTS.md`
-- `agent-harness/docs/coder-workspace.md`
-- `agent-harness/docs/n100-coder-access.md`
+- `agent-harness/CLAUDE.md`
+- `agent-harness/sprites-manifest.json`
 - `rs-1/README.md`
 - `presence-detection-engine/README.md`
 - `presence-detection-engine/docs/DEVELOPMENT_WORKFLOW.md`
 - `opticworks-store/README.md`
-- `opticworks-store/docs/reference/DEPLOYMENT_GUIDE.md`
-- `opticworks-store/docs/SECRETS.md`
-- `n8n-marketing-automation/README.md`
-- `n8n-marketing-automation/SETUP.md`
-- `rs-1/docs/firmware/HARDWAREOS_MODULE_OTA.md`
-- `rs-1/docs/cloud/INFRASTRUCTURE.md`

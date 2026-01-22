@@ -3,9 +3,9 @@ title: Infisical (Secrets)
 description: How OpticWorks manages secrets in Infisical, with repo-specific usage.
 ---
 
-## How Secrets Arrive in Coder Workspaces
+## How Secrets Arrive in Sprites
 
-Coder workspaces auto-inject secrets from Infisical into `~/.env.secrets` and source them in shell startup. This behavior is defined in the agent-harness workspace docs.
+Sprites auto-inject secrets from Infisical into `~/.env.secrets` and source them in shell startup during provisioning.
 
 ```bash
 # Inspect secrets loaded in the workspace
@@ -41,9 +41,6 @@ The N8N deployment uses environment variables in `.env` on the N100 host. The re
 
 ## Sources
 
-- `agent-harness/AGENTS.md`
-- `agent-harness/docs/coder-workspace.md`
+- `agent-harness/CLAUDE.md`
 - `rs-1/docs/cloud/INFRASTRUCTURE.md`
 - `opticworks-store/docs/SECRETS.md`
-- `n8n-marketing-automation/README.md`
-- `n8n-marketing-automation/docs/x-api-setup.md`

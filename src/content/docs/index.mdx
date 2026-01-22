@@ -4,14 +4,14 @@ description: Internal documentation, resources, and system status for OpticWorks
 template: splash
 hero:
   title: OpticWorks Intranet
-  tagline: Source-verified docs for engineering, ops, and AI-powered tooling.
+  tagline: Sprites-first agent execution platform with RS-1 hardware.
   actions:
     - text: Get Started
       link: /getting-started/onboarding/
       icon: right-arrow
       variant: primary
     - text: Agent Control Plane
-      link: /projects/agent-harness/
+      link: /agent-control-plane/
       icon: rocket
 ---
 
@@ -74,24 +74,24 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 <CardGrid>
   <LinkCard
+    title="Agent Control Plane"
+    description="Sprite provisioning and AI orchestration."
+    href="/agent-control-plane/"
+  />
+  <LinkCard
+    title="Hardware Platform"
+    description="RS-1 firmware and system infrastructure."
+    href="/hardware-platform/"
+  />
+  <LinkCard
     title="Onboarding"
     description="Workspace setup for new team members."
     href="/getting-started/onboarding/"
   />
   <LinkCard
-    title="Agent Control Plane"
-    description="Sprite provisioning and AI orchestration."
-    href="/projects/agent-harness/"
-  />
-  <LinkCard
     title="Infrastructure"
     description="N100, Sprites, and deployments."
     href="/it/infrastructure/"
-  />
-  <LinkCard
-    title="Development"
-    description="Setup guides and code standards."
-    href="/development/setup/"
   />
 </CardGrid>
 
@@ -114,9 +114,9 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
     href="/projects/store/"
   />
   <LinkCard
-    title="N8N Automation"
-    description="Marketing workflows."
-    href="/projects/n8n-marketing-automation/"
+    title="Development Setup"
+    description="Setup guides and code standards."
+    href="/development/setup/"
   />
 </CardGrid>
 
