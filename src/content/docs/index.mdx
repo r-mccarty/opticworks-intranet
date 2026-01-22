@@ -20,59 +20,52 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 <div class="stats-row">
   <div class="stat-card">
     <div class="stat-value">4</div>
-    <div class="stat-label">Active Sprites</div>
+    <div class="stat-label">Sprites</div>
   </div>
   <div class="stat-card">
     <div class="stat-value">6</div>
-    <div class="stat-label">Repositories</div>
+    <div class="stat-label">Repos</div>
   </div>
   <div class="stat-card">
     <div class="stat-value">47</div>
-    <div class="stat-label">Secrets Loaded</div>
+    <div class="stat-label">Secrets</div>
   </div>
   <div class="stat-card">
     <div class="stat-value">2</div>
-    <div class="stat-label">AI Reviewers</div>
+    <div class="stat-label">AI Agents</div>
   </div>
 </div>
 
 ## Sprite Status
 
-Cloud environments for AI agents. See the [Agent Control Plane](/projects/agent-harness/) for details.
-
-<table class="sprites-table">
+<table class="status-table">
   <thead>
     <tr>
       <th>Sprite</th>
       <th>Purpose</th>
       <th>Status</th>
-      <th>Repos</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><span class="sprite-name">hammer</span></td>
-      <td>Git push reviewer (Claude Code)</td>
+      <td><code>hammer</code></td>
+      <td>Git push reviewer (Claude)</td>
       <td><span class="badge badge-success">Active</span></td>
-      <td>6 repos</td>
     </tr>
     <tr>
-      <td><span class="sprite-name">anvil</span></td>
+      <td><code>anvil</code></td>
       <td>Git push reviewer (Codex)</td>
       <td><span class="badge badge-success">Active</span></td>
-      <td>6 repos</td>
     </tr>
     <tr>
-      <td><span class="sprite-name">mallet</span></td>
-      <td>General purpose workspace</td>
+      <td><code>mallet</code></td>
+      <td>General workspace</td>
       <td><span class="badge badge-success">Active</span></td>
-      <td>On-demand</td>
     </tr>
     <tr>
-      <td><span class="sprite-name">test-sprite</span></td>
-      <td>Bootstrapper (Infisical creds)</td>
+      <td><code>test-sprite</code></td>
+      <td>Bootstrapper</td>
       <td><span class="badge badge-info">Reserved</span></td>
-      <td>—</td>
     </tr>
   </tbody>
 </table>
@@ -82,22 +75,22 @@ Cloud environments for AI agents. See the [Agent Control Plane](/projects/agent-
 <CardGrid>
   <LinkCard
     title="Onboarding"
-    description="Workspace access, repos, and workflows for new team members and agents."
+    description="Workspace setup for new team members."
     href="/getting-started/onboarding/"
   />
   <LinkCard
     title="Agent Control Plane"
-    description="Sprite provisioning, AI orchestration, and automated code review."
+    description="Sprite provisioning and AI orchestration."
     href="/projects/agent-harness/"
   />
   <LinkCard
     title="Infrastructure"
-    description="N100, Sprites, and service deployments."
+    description="N100, Sprites, and deployments."
     href="/it/infrastructure/"
   />
   <LinkCard
-    title="Development Setup"
-    description="Repo-specific setup and toolchain guides."
+    title="Development"
+    description="Setup guides and code standards."
     href="/development/setup/"
   />
 </CardGrid>
@@ -106,51 +99,48 @@ Cloud environments for AI agents. See the [Agent Control Plane](/projects/agent-
 
 <CardGrid>
   <LinkCard
-    title="RS-1 Presence Sensor"
-    description="ESP32 + LD2450 mmWave presence detection hardware."
+    title="RS-1 Sensor"
+    description="ESP32 + LD2450 presence detection."
     href="/projects/rs-1/"
   />
   <LinkCard
     title="Presence Engine"
-    description="ESPHome-based presence detection with Home Assistant."
+    description="ESPHome presence with Home Assistant."
     href="/projects/presence-engine/"
   />
   <LinkCard
     title="OpticWorks Store"
-    description="Next.js + Medusa e-commerce platform."
+    description="Next.js + Medusa e-commerce."
     href="/projects/store/"
   />
   <LinkCard
     title="N8N Automation"
-    description="Marketing automation workflows."
+    description="Marketing workflows."
     href="/projects/n8n-marketing-automation/"
   />
 </CardGrid>
 
 ## Resources
 
-<div class="dashboard-grid">
-  <a href="/it/infisical/" class="dashboard-card" style="text-decoration: none; color: inherit;">
-    <h3><span class="card-icon">🔐</span> Secrets (Infisical)</h3>
-    <p>47 environment variables auto-injected into Sprites.</p>
+<div class="resource-grid">
+  <a href="/it/infisical/" class="resource-card">
+    <h3>Secrets</h3>
+    <p>47 env vars via Infisical</p>
   </a>
-  <a href="/it/hardware/" class="dashboard-card" style="text-decoration: none; color: inherit;">
-    <h3><span class="card-icon">🔌</span> Hardware Access</h3>
-    <p>N100 SSH access via Cloudflare tunnel for USB/serial.</p>
+  <a href="/it/hardware/" class="resource-card">
+    <h3>Hardware</h3>
+    <p>N100 SSH access</p>
   </a>
-  <a href="/development/standards/" class="dashboard-card" style="text-decoration: none; color: inherit;">
-    <h3><span class="card-icon">📋</span> Code Standards</h3>
-    <p>Guidelines for consistent, maintainable code.</p>
+  <a href="/development/standards/" class="resource-card">
+    <h3>Standards</h3>
+    <p>Code guidelines</p>
   </a>
-  <a href="/development/git-workflow/" class="dashboard-card" style="text-decoration: none; color: inherit;">
-    <h3><span class="card-icon">🔀</span> Git Workflow</h3>
-    <p>Branching, commits, and automated review process.</p>
+  <a href="/development/git-workflow/" class="resource-card">
+    <h3>Git Workflow</h3>
+    <p>Branching & review</p>
   </a>
 </div>
 
----
-
-<div class="info-box info-box-note">
-  <h4>Source-Verified Documentation</h4>
-  <p>This intranet is sourced from audited repo documentation. Pages marked as <em>pending</em> indicate no authoritative source was found during the last audit.</p>
+<div class="note-box">
+  <strong>Source-verified.</strong> This intranet syncs from audited repo docs.
 </div>

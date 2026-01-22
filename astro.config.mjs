@@ -9,11 +9,6 @@ export default defineConfig({
 		starlight({
 			title: 'OpticWorks Intranet',
 			description: 'Internal documentation and resources for OpticWorks team members',
-			logo: {
-				light: './src/assets/logo-light.svg',
-				dark: './src/assets/logo-dark.svg',
-				replacesTitle: false,
-			},
 			customCss: ['./src/styles/custom.css'],
 			head: [
 				{
