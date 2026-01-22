@@ -1,73 +1,194 @@
 ---
-title: Agent Harness
-description: Workspace bootstrap and developer environment reference.
+title: Agent Control Plane
+description: Cloud environments for AI agents - sprite provisioning, orchestration, and automated code review.
 ---
 
-The `agent-harness` repo is the source of truth for OpticWorks Coder workspaces. It documents workspace capabilities, secrets injection, and N100 access.
+The **Agent Control Plane** (formerly agent-harness) is the orchestration system for AI agent cloud environments called **Sprites**. It handles provisioning, secrets injection, code review automation, and agent execution.
 
-## What It Provides (Verified)
+## What is a Sprite?
 
-From `agent-harness/AGENTS.md` and `agent-harness/docs/coder-workspace.md`:
+A Sprite is a hardware-isolated execution environment for AI agents:
 
-- Pre-authenticated AI CLIs (`claude`, `codex`, `gemini`, `opencode`)
-- Secrets injected from Infisical into `~/.env.secrets`
-- GitHub CLI auth + git push configured
-- N100 SSH access via `ssh n100`
-- Hardware tooling (`adb`, `picocom`, `lsusb`)
+- **Hardware isolation** — True VM-level separation, not containers
+- **Persistent** — State survives across sessions, can be checkpointed and restored
+- **Fast startup** — ~1s cold start, instant when warm
+- **Pre-configured** — Secrets, GitHub access, and AI tooling ready to go
 
-## Where to Look
+## Sprite Inventory
 
-- `agent-harness/AGENTS.md` for quick workspace orientation
-- `agent-harness/docs/coder-workspace.md` for the full bootstrap flow
-- `agent-harness/docs/n100-coder-access.md` for N100 + Coder CLI operations
+| Sprite | Purpose | Status | Repos |
+|--------|---------|--------|-------|
+| **hammer** | Git push reviewer (Claude Code). Writes RFDs on push. | Reserved | 6 repos |
+| **anvil** | Git push reviewer (Codex). Writes RFDs on push. | Reserved | 6 repos |
+| **mallet** | General purpose agent workspace | Available | On-demand |
+| **test-sprite** | Bootstrapper with Infisical credentials | Reserved | — |
 
-## Sources
+:::caution[Reserved Sprites]
+**Do not use `hammer` or `anvil` for general tasks** — they're dedicated to automated code review workflows triggered by git push.
+:::
 
-- `agent-harness/AGENTS.md`
-- `agent-harness/docs/coder-workspace.md`
-- `agent-harness/docs/n100-coder-access.md`
+## Environment
 
-## Diagrams
+Every sprite comes pre-configured with:
 
-### Workspace Bootstrap
+| Resource | Location | Description |
+|----------|----------|-------------|
+| **Secrets** | `~/.env.secrets` | 47+ variables, auto-sourced in bash |
+| **AI CLIs** | `claude`, `codex` | Pre-authenticated, ready to use |
+| **GitHub** | `gh` CLI | Authenticated, git push works |
+| **Repos** | `~/workspace/<repo>` | Cloned during provisioning |
+| **Hardware** | `ssh n100` | Via Cloudflare tunnel |
 
-```
-Coder Template -> startup script -> agent-harness clone
-        |                |                 |
-        |                |                 +--> ~/AGENTS.md symlink
-        |                +--> ~/.env.secrets from Infisical
-        +--> tools install
-```
-
-### Secrets Injection
-
-```
-Infisical
-   |
-   +--> ~/.env.secrets (auto-sourced)
-           |
-           +--> gh auth
-           +--> CLAUDE/CODEX credentials
-           +--> ssh n100 key
-```
-
-### N100 Access Path
-
-```
-Coder workspace
-    |
-    +--> ssh n100
-            |
-            +--> Docker services (N8N, HA, cloudflared)
-            +--> USB / serial devices
-```
-
-## Intranet Sync (Source-of-Truth)
-
-The intranet mirrors `agent-harness` docs into `src/content/docs/sources/agent-harness/` for browsing. To refresh the mirror:
+### Key Environment Variables
 
 ```bash
-./scripts/sync-agent-harness.sh
+$GITHUB_TOKEN        # GitHub API access
+$ANTHROPIC_API_KEY   # Claude API
+$OPENAI_API_KEY      # OpenAI/Codex API
 ```
 
-This copies `agent-harness/AGENTS.md` and `agent-harness/docs/` into the intranet repo. The synced files are listed at `/sources/agent-harness/`.
+## Quick Start
+
+Run `sprite-info` inside any sprite to see your environment:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Sprite Environment
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Sprite:      mallet
+  GitHub:      r-mccarty
+  Secrets:     47 loaded (~/.env.secrets)
+  Claude:      available
+  Repos:       rs-1, hardwareOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+## Sprite Operations
+
+### Creating a Sprite
+
+From the bootstrapper or with Infisical credentials:
+
+```bash
+# Create with specific repos
+./scripts/create-sprite.py --repo rs-1 --repo hardwareOS my-agent
+
+# Refresh existing sprite (update secrets/context)
+./scripts/create-sprite.py --existing my-agent
+```
+
+### Checkpointing
+
+Sprites support point-in-time snapshots:
+
+```bash
+sprite checkpoint create -s mallet --comment "Working state"
+sprite checkpoint list -s mallet
+sprite restore -s mallet <checkpoint-id>
+```
+
+### Executing Commands
+
+```bash
+# Quick command
+sprite exec -s mallet echo "hello"
+
+# Interactive console
+sprite console -s mallet
+```
+
+## Automated Code Review
+
+Git push to any configured repository triggers an automated review:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Git Push → GitHub Action → Sprite (hammer/anvil)           │
+│                    ↓                                        │
+│              Analyze Diff → Generate RFD → Commit Back      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### How It Works
+
+1. **Push triggers GitHub Action** — Configured per-repository
+2. **Action sends diff to sprite** — hammer (Claude) or anvil (Codex)
+3. **Agent analyzes changes** — Reviews code, identifies issues
+4. **RFD written** — Request for Discussion document committed to `docs/rfds/`
+
+### Configuring Reviews
+
+Per-repository behavior is controlled via:
+
+```
+scripts/hammer/prompt_config.json
+```
+
+## AI Orchestration
+
+Run Claude/Codex programmatically for long-running tasks:
+
+```bash
+python scripts/orchestrate-experiment.py \
+  --sprite mallet \
+  --prompt-file task.txt \
+  --workdir /home/sprite/workspace/rs-1 \
+  --timeout 600
+```
+
+Uses HTTP POST execution path (more reliable than WebSocket for long runs).
+
+## Monitored Repositories
+
+The following repos are cloned to sprites and monitored for automated review:
+
+| Repository | Stack | Description |
+|------------|-------|-------------|
+| **rs-1** | ESP32 + LD2450 | Presence sensor hardware |
+| **hardwareOS** | Go + React | Embedded platform |
+| **opticworks-store** | Next.js + Medusa | E-commerce |
+| **esphome-presence-engine** | ESPHome | Presence detection |
+| **rv1106-system** | Linux | RV1106 system images |
+| **n8n-marketing-automation** | N8N | Marketing workflows |
+
+## Known Issues
+
+### Codex Sandbox Failure
+
+**Symptom:** `error running landlock: Sandbox(LandlockRestrict)`
+
+**Cause:** Codex's landlock sandbox conflicts with sprite isolation.
+
+**Fix:** Provisioning sets `sandbox_mode = "danger-full-access"` in `~/.codex/config.toml`. This is safe because sprites are already externally sandboxed.
+
+### Codex Auth Missing
+
+**Symptom:** `401 Unauthorized: Missing bearer or basic authentication`
+
+**Fix:** Re-provision to inject `CODEX_AUTH_JSON`:
+
+```bash
+./scripts/create-sprite.py --existing <sprite-name>
+```
+
+## Documentation
+
+| Document | Purpose |
+|----------|---------|
+| `sprites-manifest.md` | Human-readable sprite inventory |
+| `docs/sprites-operations.md` | Provisioning, checkpointing |
+| `docs/orchestration-experiment.md` | Running agents programmatically |
+| `docs/hammer-review.md` | Automated code review setup |
+
+## Scripts Reference
+
+| Script | Purpose |
+|--------|---------|
+| `create-sprite.py` | Create and provision sprites |
+| `orchestrate-experiment.py` | Run Claude on sprites |
+| `hammer/build_prompt.py` | Central prompt builder for reviews |
+| `render-sprites-manifest.py` | Regenerate manifest markdown |
+
+---
+
+**Source:** `agent-harness/CLAUDE.md`, `agent-harness/sprites-manifest.json`

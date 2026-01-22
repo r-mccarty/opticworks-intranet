@@ -1,54 +1,156 @@
 ---
 title: Welcome to OpticWorks
-description: Internal documentation and resources for OpticWorks team members.
+description: Internal documentation, resources, and system status for OpticWorks team members.
+template: splash
+hero:
+  title: OpticWorks Intranet
+  tagline: Source-verified docs for engineering, ops, and AI-powered tooling.
+  actions:
+    - text: Get Started
+      link: /getting-started/onboarding/
+      icon: right-arrow
+      variant: primary
+    - text: Agent Control Plane
+      link: /projects/agent-harness/
+      icon: rocket
 ---
 
-import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-<div class="hero">
-  <p class="tagline">Source-verified docs for OpticWorks engineering, ops, and tooling.</p>
-  <div class="actions" style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-    <a class="sl-link-button primary" href="/getting-started/onboarding/" style="background: var(--sl-color-accent); color: #fff;">New Employee & Agent Onboarding</a>
-    <a class="sl-link-button minimal" href="/projects/">Projects Overview</a>
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-value">4</div>
+    <div class="stat-label">Active Sprites</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">6</div>
+    <div class="stat-label">Repositories</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">47</div>
+    <div class="stat-label">Secrets Loaded</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-value">2</div>
+    <div class="stat-label">AI Reviewers</div>
   </div>
 </div>
 
-Use the sidebar to navigate, or start with the links below.
+## Sprite Status
+
+Cloud environments for AI agents. See the [Agent Control Plane](/projects/agent-harness/) for details.
+
+<table class="sprites-table">
+  <thead>
+    <tr>
+      <th>Sprite</th>
+      <th>Purpose</th>
+      <th>Status</th>
+      <th>Repos</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="sprite-name">hammer</span></td>
+      <td>Git push reviewer (Claude Code)</td>
+      <td><span class="badge badge-success">Active</span></td>
+      <td>6 repos</td>
+    </tr>
+    <tr>
+      <td><span class="sprite-name">anvil</span></td>
+      <td>Git push reviewer (Codex)</td>
+      <td><span class="badge badge-success">Active</span></td>
+      <td>6 repos</td>
+    </tr>
+    <tr>
+      <td><span class="sprite-name">mallet</span></td>
+      <td>General purpose workspace</td>
+      <td><span class="badge badge-success">Active</span></td>
+      <td>On-demand</td>
+    </tr>
+    <tr>
+      <td><span class="sprite-name">test-sprite</span></td>
+      <td>Bootstrapper (Infisical creds)</td>
+      <td><span class="badge badge-info">Reserved</span></td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Quick Links
 
-<CardGrid stagger>
-	<LinkCard
-		title="Onboarding"
-		description="Workspace access, repos, and workflows."
-		href="/getting-started/onboarding/"
-		icon="user"
-	/>
-	<LinkCard
-		title="Infrastructure"
-		description="Coder, N100, and N8N deployment."
-		href="/it/infrastructure/"
-		icon="server"
-	/>
-	<LinkCard
-		title="Development Setup"
-		description="Repo-specific setup and toolchain."
-		href="/development/setup/"
-		icon="seti:config"
-	/>
-	<LinkCard
-		title="Lessons Learned"
-		description="Postmortem-driven learnings."
-		href="/projects/lessons-learned/"
-		icon="document"
-	/>
+<CardGrid>
+  <LinkCard
+    title="Onboarding"
+    description="Workspace access, repos, and workflows for new team members and agents."
+    href="/getting-started/onboarding/"
+  />
+  <LinkCard
+    title="Agent Control Plane"
+    description="Sprite provisioning, AI orchestration, and automated code review."
+    href="/projects/agent-harness/"
+  />
+  <LinkCard
+    title="Infrastructure"
+    description="N100, Sprites, and service deployments."
+    href="/it/infrastructure/"
+  />
+  <LinkCard
+    title="Development Setup"
+    description="Repo-specific setup and toolchain guides."
+    href="/development/setup/"
+  />
 </CardGrid>
 
-- [Onboarding](/getting-started/onboarding/)
-- [Infrastructure](/it/infrastructure/)
-- [Development Setup](/development/setup/)
-- [Lessons Learned](/projects/lessons-learned/)
+## Projects
 
-## Announcements
+<CardGrid>
+  <LinkCard
+    title="RS-1 Presence Sensor"
+    description="ESP32 + LD2450 mmWave presence detection hardware."
+    href="/projects/rs-1/"
+  />
+  <LinkCard
+    title="Presence Engine"
+    description="ESPHome-based presence detection with Home Assistant."
+    href="/projects/presence-engine/"
+  />
+  <LinkCard
+    title="OpticWorks Store"
+    description="Next.js + Medusa e-commerce platform."
+    href="/projects/store/"
+  />
+  <LinkCard
+    title="N8N Automation"
+    description="Marketing automation workflows."
+    href="/projects/n8n-marketing-automation/"
+  />
+</CardGrid>
 
-This intranet is now sourced from audited repo documentation. If a page is marked as pending, it means no authoritative source was found during the audit.
+## Resources
+
+<div class="dashboard-grid">
+  <a href="/it/infisical/" class="dashboard-card" style="text-decoration: none; color: inherit;">
+    <h3><span class="card-icon">🔐</span> Secrets (Infisical)</h3>
+    <p>47 environment variables auto-injected into Sprites.</p>
+  </a>
+  <a href="/it/hardware/" class="dashboard-card" style="text-decoration: none; color: inherit;">
+    <h3><span class="card-icon">🔌</span> Hardware Access</h3>
+    <p>N100 SSH access via Cloudflare tunnel for USB/serial.</p>
+  </a>
+  <a href="/development/standards/" class="dashboard-card" style="text-decoration: none; color: inherit;">
+    <h3><span class="card-icon">📋</span> Code Standards</h3>
+    <p>Guidelines for consistent, maintainable code.</p>
+  </a>
+  <a href="/development/git-workflow/" class="dashboard-card" style="text-decoration: none; color: inherit;">
+    <h3><span class="card-icon">🔀</span> Git Workflow</h3>
+    <p>Branching, commits, and automated review process.</p>
+  </a>
+</div>
+
+---
+
+<div class="info-box info-box-note">
+  <h4>Source-Verified Documentation</h4>
+  <p>This intranet is sourced from audited repo documentation. Pages marked as <em>pending</em> indicate no authoritative source was found during the last audit.</p>
+</div>
