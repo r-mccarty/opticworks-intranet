@@ -20,7 +20,7 @@ From the bootstrapper or with Infisical credentials:
 Sprites support point-in-time snapshots for state preservation:
 
 ```bash
-# Create a checkpoint
+# Create a checkpoint (using legacy name - API still uses these)
 sprite checkpoint create -s mallet --comment "Working state"
 
 # List checkpoints
@@ -29,6 +29,8 @@ sprite checkpoint list -s mallet
 # Restore from checkpoint
 sprite restore -s mallet <checkpoint-id>
 ```
+
+> **Note:** The sprites CLI still uses legacy names (mallet, hammer, etc.) when interacting with the API. Semantic names (dev-workspace-01) are used in fleet management and documentation.
 
 Use checkpointing to:
 - Save state before risky operations

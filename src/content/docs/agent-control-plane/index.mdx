@@ -21,49 +21,58 @@ A Sprite is a hardware-isolated execution environment for AI agents:
 <table class="status-table">
   <thead>
     <tr>
-      <th>Sprite</th>
+      <th>Semantic Name</th>
+      <th>Legacy Name</th>
       <th>Purpose</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code>hammer</code></td>
+      <td><code>agents-review-claude-01</code></td>
+      <td>hammer</td>
       <td>Git push reviewer (Claude)</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>anvil</code></td>
+      <td><code>agents-review-codex-01</code></td>
+      <td>anvil</td>
       <td>Git push reviewer (Codex)</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>forge</code></td>
+      <td><code>agents-synth-01</code></td>
+      <td>forge</td>
       <td>RFD synthesis (Claude)</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>mallet</code></td>
+      <td><code>dev-workspace-01</code></td>
+      <td>mallet</td>
       <td>General workspace</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>test-sprite</code></td>
+      <td><code>infra-bootstrap-01</code></td>
+      <td>test-sprite</td>
       <td>Bootstrapper</td>
       <td><span class="badge badge-info">Reserved</span></td>
     </tr>
     <tr>
-      <td><code>sprite-mobile-conductor</code></td>
+      <td><code>mobile-conductor-01</code></td>
+      <td>sprite-mobile-conductor</td>
       <td>Distributed task conductor</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>sprite-mobile-worker-1</code></td>
+      <td><code>mobile-worker-01</code></td>
+      <td>sprite-mobile-worker-1</td>
       <td>Worker node</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
     <tr>
-      <td><code>sprite-mobile-worker-2</code></td>
+      <td><code>mobile-worker-02</code></td>
+      <td>sprite-mobile-worker-2</td>
       <td>Worker node</td>
       <td><span class="badge badge-active">Active</span></td>
     </tr>
@@ -71,7 +80,7 @@ A Sprite is a hardware-isolated execution environment for AI agents:
 </table>
 
 :::caution[Reserved Sprites]
-**Do not use `hammer`, `anvil`, or `forge` for general tasks** — they're dedicated to automated code review workflows triggered by git push.
+**Do not use `agents-*` sprites for general tasks** — they're dedicated to automated code review workflows triggered by git push. Use `dev-workspace-*` for ad-hoc work.
 :::
 
 ## Quick Links

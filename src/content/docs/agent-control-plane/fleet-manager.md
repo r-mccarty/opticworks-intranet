@@ -21,6 +21,21 @@ Sprites are beta infrastructure. We've encountered issues where:
 | **Reliable cron checks** | Every 15 minutes, automatically |
 | **Fleet-wide operations** | Execute commands across all sprites at once |
 
+## Naming Convention
+
+Sprites use semantic naming: `{team}-{role}-{id}`
+
+| Semantic Name | Legacy API Name | Team |
+|---------------|-----------------|------|
+| `agents-review-claude-01` | hammer | agents |
+| `agents-review-codex-01` | anvil | agents |
+| `agents-synth-01` | forge | agents |
+| `dev-workspace-01` | mallet | dev |
+| `infra-bootstrap-01` | test-sprite | infra |
+| `mobile-conductor-01` | sprite-mobile-conductor | mobile |
+| `mobile-worker-01` | sprite-mobile-worker-1 | mobile |
+| `mobile-worker-02` | sprite-mobile-worker-2 | mobile |
+
 ## Commands
 
 ### Check Fleet Status
@@ -28,25 +43,34 @@ Sprites are beta infrastructure. We've encountered issues where:
 ```bash
 $ fleet status
 Fleet Status (8 sprites)
-============================================================================
-Sprite                    Status     Responsive   API ms     Claude
-----------------------------------------------------------------------------
-hammer                    warm       yes          169ms      yes
-anvil                     warm       yes          223ms      yes
-forge                     warm       yes          150ms      yes
-mallet                    warm       yes          184ms      yes
-test-sprite               warm       yes          160ms      yes
-sprite-mobile-conductor   warm       yes          123ms      yes
-sprite-mobile-worker-1    warm       yes          115ms      yes
-sprite-mobile-worker-2    warm       yes          190ms      yes
-----------------------------------------------------------------------------
+==========================================================================================
+Sprite                     (API Name)      Status   Resp   ms       Claude
+------------------------------------------------------------------------------------------
+agents-review-claude-01    (hammer)        warm     yes    169      yes
+agents-review-codex-01     (anvil)         warm     yes    223      yes
+agents-synth-01            (forge)         warm     yes    150      yes
+dev-workspace-01           (mallet)        warm     yes    184      yes
+infra-bootstrap-01         (test-sprite)   warm     yes    160      yes
+mobile-conductor-01        (sprite-mobile-conductor) warm yes 123   yes
+mobile-worker-01           (sprite-mobile-worker-1) warm  yes 115   yes
+mobile-worker-02           (sprite-mobile-worker-2) warm  yes 190   yes
+------------------------------------------------------------------------------------------
 Total: 8 | Healthy: 8 | Unhealthy: 0
 ```
 
+**Filter by team:**
+```bash
+$ fleet status --team agents
+Fleet Status (3 sprites (team: agents))
+...
+```
+
 **Columns explained:**
+- **Sprite**: Semantic name
+- **(API Name)**: Legacy name used by sprites.dev API
 - **Status**: API-reported state (warm, cold, running, not_found, error)
-- **Responsive**: Whether a command executed successfully inside the sprite
-- **API ms**: Latency to the Sprites API
+- **Resp**: Whether a command executed successfully inside the sprite
+- **ms**: Latency to the Sprites API
 - **Claude**: Whether Claude CLI is available
 
 ### Execute Fleet-Wide Commands
