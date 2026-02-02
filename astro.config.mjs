@@ -43,6 +43,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Overview', slug: 'agent-control-plane' },
 						{ label: 'Sprite Operations', slug: 'agent-control-plane/operations' },
+						{ label: 'Fleet Manager', slug: 'agent-control-plane/fleet-manager' },
 						{ label: 'Automated Code Review', slug: 'agent-control-plane/code-review' },
 						{ label: 'Coder Workspaces (Alternative)', slug: 'agent-control-plane/coder' },
 					],
