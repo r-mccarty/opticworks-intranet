@@ -36,7 +36,11 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
   </div>
 </div>
 
-## Sprite Status
+## Fleet Status
+
+<div class="note-box">
+  <strong>Live Dashboard Available.</strong> View real-time sprite health, API status, and team filtering on the <a href="/agent-control-plane/dashboard/">Fleet Dashboard</a>.
+</div>
 
 <table class="status-table">
   <thead>
@@ -75,9 +79,19 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
   </tbody>
 </table>
 
+<a href="/agent-control-plane/dashboard/" class="resource-card" style="display: inline-block; margin-top: 1rem;">
+  <h3>View Fleet Dashboard →</h3>
+  <p>Real-time health monitoring for all sprites</p>
+</a>
+
 ## Quick Links
 
 <CardGrid>
+  <LinkCard
+    title="Fleet Dashboard"
+    description="Real-time sprite health monitoring."
+    href="/agent-control-plane/dashboard/"
+  />
   <LinkCard
     title="Agent Control Plane"
     description="Sprite provisioning and AI orchestration."
@@ -92,11 +106,6 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
     title="Onboarding"
     description="Workspace setup for new team members."
     href="/getting-started/onboarding/"
-  />
-  <LinkCard
-    title="Infrastructure"
-    description="N100, Sprites, and deployments."
-    href="/it/infrastructure/"
   />
 </CardGrid>
 
