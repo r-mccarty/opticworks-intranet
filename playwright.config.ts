@@ -28,7 +28,7 @@ export default defineConfig({
   /* Shared settings for all projects */
   use: {
     /* Base URL for the dev server */
-    baseURL: 'http://localhost:4321',
+    baseURL: 'http://127.0.0.1:4321',
 
     /* Collect trace when retrying the failed test */
     trace: 'on-first-retry',
@@ -72,8 +72,8 @@ export default defineConfig({
 
   /* Run dev server before starting tests */
   webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:4321',
+    command: 'npm run dev -- --host 0.0.0.0',
+    url: 'http://127.0.0.1:4321',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

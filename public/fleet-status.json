@@ -1,0 +1,100 @@
+{
+  "timestamp": "2026-02-03T04:55:00Z",
+  "total": 8,
+  "healthy": 6,
+  "unhealthy": 2,
+  "sprites": [
+    {
+      "name": "agents-review-claude-01",
+      "api_status": "warm",
+      "api_response_ms": 245,
+      "responsive": true,
+      "probe_response_ms": 1823,
+      "claude_available": true,
+      "codex_available": true,
+      "healthy": true
+    },
+    {
+      "name": "agents-review-codex-01",
+      "api_status": "warm",
+      "api_response_ms": 198,
+      "responsive": true,
+      "probe_response_ms": 1456,
+      "claude_available": true,
+      "codex_available": true,
+      "healthy": true
+    },
+    {
+      "name": "agents-synth-01",
+      "api_status": "cold",
+      "api_response_ms": 312,
+      "responsive": null,
+      "probe_response_ms": null,
+      "claude_available": null,
+      "codex_available": null,
+      "healthy": false
+    },
+    {
+      "name": "dev-workspace-01",
+      "api_status": "warm",
+      "api_response_ms": 156,
+      "responsive": true,
+      "probe_response_ms": 1234,
+      "claude_available": true,
+      "codex_available": true,
+      "healthy": true
+    },
+    {
+      "name": "infra-bootstrap-01",
+      "api_status": "warm",
+      "api_response_ms": 189,
+      "responsive": true,
+      "probe_response_ms": 2156,
+      "claude_available": true,
+      "codex_available": true,
+      "healthy": true
+    },
+    {
+      "name": "mobile-conductor-01",
+      "api_status": "warm",
+      "api_response_ms": 267,
+      "responsive": true,
+      "probe_response_ms": 1678,
+      "claude_available": true,
+      "codex_available": false,
+      "healthy": true
+    },
+    {
+      "name": "mobile-worker-01",
+      "api_status": "not_found",
+      "api_response_ms": null,
+      "responsive": null,
+      "probe_response_ms": null,
+      "claude_available": null,
+      "codex_available": null,
+      "healthy": false
+    },
+    {
+      "name": "mobile-worker-02",
+      "api_status": "warm",
+      "api_response_ms": 234,
+      "responsive": true,
+      "probe_response_ms": 1567,
+      "claude_available": true,
+      "codex_available": true,
+      "healthy": true
+    }
+  ],
+  "errors": [
+    {
+      "sprite": "agents-synth-01",
+      "status": "cold",
+      "error": null
+    },
+    {
+      "sprite": "mobile-worker-01",
+      "status": "not_found",
+      "error": "Sprite not found in fleet"
+    }
+  ]
+}

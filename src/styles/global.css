@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+@source "../components/**/*.{tsx,jsx}";
+@source "../../node_modules/@tremor/react/**/*.{js,jsx}";
